@@ -1,0 +1,1069 @@
+{
+  "metadata": {
+    "dbt_schema_version": "https://schemas.getdbt.com/dbt/catalog/v1.json",
+    "dbt_version": "1.7.10",
+    "generated_at": "2024-03-21T11:06:50.000000Z",
+    "invocation_id": "f9fa9220-2f48-4992-b475-e9c42081f4ce",
+    "env": {}
+  },
+  "nodes": {
+    "model.dbt_experiments.stg_covid__us_deaths": {
+      "unique_id": "model.dbt_experiments.stg_covid__us_deaths",
+      "metadata": {
+        "type": "view",
+        "schema": "STAGING",
+        "name": "STG_COVID__US_DEATHS",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "ADMIN_NAME": {
+          "type": "TEXT",
+          "index": 1,
+          "name": "ADMIN_NAME",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "STATE",
+          "comment": null
+        },
+        "NUMBER_OF_CASES": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "NUMBER_OF_CASES",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 4,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.stg_covid__us_confirmed": {
+      "unique_id": "model.dbt_experiments.stg_covid__us_confirmed",
+      "metadata": {
+        "type": "view",
+        "schema": "STAGING",
+        "name": "STG_COVID__US_CONFIRMED",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "ADMIN_NAME": {
+          "type": "TEXT",
+          "index": 1,
+          "name": "ADMIN_NAME",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "STATE",
+          "comment": null
+        },
+        "NUMBER_OF_CASES": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "NUMBER_OF_CASES",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 4,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.stg_covid__location_reference": {
+      "unique_id": "model.dbt_experiments.stg_covid__location_reference",
+      "metadata": {
+        "type": "view",
+        "schema": "STAGING",
+        "name": "STG_COVID__LOCATION_REFERENCE",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "LOCATION_ID": {
+          "type": "NUMBER",
+          "index": 1,
+          "name": "LOCATION_ID",
+          "comment": null
+        },
+        "ISO_2_COUNTRY_CODE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "ISO_2_COUNTRY_CODE",
+          "comment": null
+        },
+        "ISO_3_COUNTRY_CODE": {
+          "type": "TEXT",
+          "index": 3,
+          "name": "ISO_3_COUNTRY_CODE",
+          "comment": null
+        },
+        "ADMIN_NAME": {
+          "type": "TEXT",
+          "index": 4,
+          "name": "ADMIN_NAME",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 5,
+          "name": "STATE",
+          "comment": null
+        },
+        "COUNTRY": {
+          "type": "TEXT",
+          "index": 6,
+          "name": "COUNTRY",
+          "comment": null
+        },
+        "COUNTRY_STATE": {
+          "type": "TEXT",
+          "index": 7,
+          "name": "COUNTRY_STATE",
+          "comment": null
+        },
+        "LATITUDE": {
+          "type": "FLOAT",
+          "index": 8,
+          "name": "LATITUDE",
+          "comment": null
+        },
+        "LONGITUDE": {
+          "type": "FLOAT",
+          "index": 9,
+          "name": "LONGITUDE",
+          "comment": null
+        },
+        "COUNTRY_CODE": {
+          "type": "NUMBER",
+          "index": 10,
+          "name": "COUNTRY_CODE",
+          "comment": null
+        },
+        "FIPS": {
+          "type": "NUMBER",
+          "index": 11,
+          "name": "FIPS",
+          "comment": null
+        },
+        "POPULATION": {
+          "type": "NUMBER",
+          "index": 12,
+          "name": "POPULATION",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.stg_covid__us_simplified": {
+      "unique_id": "model.dbt_experiments.stg_covid__us_simplified",
+      "metadata": {
+        "type": "view",
+        "schema": "STAGING",
+        "name": "STG_COVID__US_SIMPLIFIED",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "ADMIN_NAME": {
+          "type": "TEXT",
+          "index": 1,
+          "name": "ADMIN_NAME",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "STATE",
+          "comment": null
+        },
+        "CONFIRMED_CASES_COUNT": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "CONFIRMED_CASES_COUNT",
+          "comment": null
+        },
+        "DEATHS_COUNT": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "DEATHS_COUNT",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 5,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.stg_covid__countries_aggregated": {
+      "unique_id": "model.dbt_experiments.stg_covid__countries_aggregated",
+      "metadata": {
+        "type": "view",
+        "schema": "STAGING",
+        "name": "STG_COVID__COUNTRIES_AGGREGATED",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "COUNTRY": {
+          "type": "TEXT",
+          "index": 1,
+          "name": "COUNTRY",
+          "comment": null
+        },
+        "CONFIRMED_COUNT": {
+          "type": "NUMBER",
+          "index": 2,
+          "name": "CONFIRMED_COUNT",
+          "comment": null
+        },
+        "RECOVERED_COUNT": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "RECOVERED_COUNT",
+          "comment": null
+        },
+        "DEATHS_COUNT": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "DEATHS_COUNT",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 5,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.stg_covid__time_series_covid_combined": {
+      "unique_id": "model.dbt_experiments.stg_covid__time_series_covid_combined",
+      "metadata": {
+        "type": "view",
+        "schema": "STAGING",
+        "name": "STG_COVID__TIME_SERIES_COVID_COMBINED",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "COUNTRY": {
+          "type": "TEXT",
+          "index": 1,
+          "name": "COUNTRY",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "STATE",
+          "comment": null
+        },
+        "CONFIRMED": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "CONFIRMED",
+          "comment": null
+        },
+        "RECOVERED": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "RECOVERED",
+          "comment": null
+        },
+        "DEATHS": {
+          "type": "NUMBER",
+          "index": 5,
+          "name": "DEATHS",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 6,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.stg_covid__worldwide_aggregated": {
+      "unique_id": "model.dbt_experiments.stg_covid__worldwide_aggregated",
+      "metadata": {
+        "type": "view",
+        "schema": "STAGING",
+        "name": "STG_COVID__WORLDWIDE_AGGREGATED",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "CONFIRMED_CASES_COUNT": {
+          "type": "NUMBER",
+          "index": 1,
+          "name": "CONFIRMED_CASES_COUNT",
+          "comment": null
+        },
+        "RECOVERED_CASES_COUNT": {
+          "type": "NUMBER",
+          "index": 2,
+          "name": "RECOVERED_CASES_COUNT",
+          "comment": null
+        },
+        "DEATHS_COUNT": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "DEATHS_COUNT",
+          "comment": null
+        },
+        "DAILY_CASES_INCREASE_RATE": {
+          "type": "FLOAT",
+          "index": 4,
+          "name": "DAILY_CASES_INCREASE_RATE",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 5,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.stg_covid__key_countries_pivoted": {
+      "unique_id": "model.dbt_experiments.stg_covid__key_countries_pivoted",
+      "metadata": {
+        "type": "view",
+        "schema": "STAGING",
+        "name": "STG_COVID__KEY_COUNTRIES_PIVOTED",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "CHINA": {
+          "type": "NUMBER",
+          "index": 1,
+          "name": "CHINA",
+          "comment": null
+        },
+        "US": {
+          "type": "NUMBER",
+          "index": 2,
+          "name": "US",
+          "comment": null
+        },
+        "UK": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "UK",
+          "comment": null
+        },
+        "ITALY": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "ITALY",
+          "comment": null
+        },
+        "FRANCE": {
+          "type": "NUMBER",
+          "index": 5,
+          "name": "FRANCE",
+          "comment": null
+        },
+        "GERMANY": {
+          "type": "NUMBER",
+          "index": 6,
+          "name": "GERMANY",
+          "comment": null
+        },
+        "SPAIN": {
+          "type": "NUMBER",
+          "index": 7,
+          "name": "SPAIN",
+          "comment": null
+        },
+        "IRAN": {
+          "type": "NUMBER",
+          "index": 8,
+          "name": "IRAN",
+          "comment": null
+        },
+        "AUSTRALIA": {
+          "type": "NUMBER",
+          "index": 9,
+          "name": "AUSTRALIA",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 10,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.dw_fct_worldwide_recordings": {
+      "unique_id": "model.dbt_experiments.dw_fct_worldwide_recordings",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_WAREHOUSE",
+        "name": "DW_FCT_WORLDWIDE_RECORDINGS",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "COUNTRY": {
+          "type": "TEXT",
+          "index": 1,
+          "name": "COUNTRY",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "STATE",
+          "comment": null
+        },
+        "CONFIRMED": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "CONFIRMED",
+          "comment": null
+        },
+        "RECOVERED": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "RECOVERED",
+          "comment": null
+        },
+        "DEATHS": {
+          "type": "NUMBER",
+          "index": 5,
+          "name": "DEATHS",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 6,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.dw_fct_us_daily_aggregations": {
+      "unique_id": "model.dbt_experiments.dw_fct_us_daily_aggregations",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_WAREHOUSE",
+        "name": "DW_FCT_US_DAILY_AGGREGATIONS",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "ADMIN_NAME": {
+          "type": "TEXT",
+          "index": 1,
+          "name": "ADMIN_NAME",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "STATE",
+          "comment": null
+        },
+        "CONFIRMED_COUNT": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "CONFIRMED_COUNT",
+          "comment": null
+        },
+        "DEATHS_COUNT": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "DEATHS_COUNT",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 5,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.dw_fct_aggregated_cases_by_country": {
+      "unique_id": "model.dbt_experiments.dw_fct_aggregated_cases_by_country",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_WAREHOUSE",
+        "name": "DW_FCT_AGGREGATED_CASES_BY_COUNTRY",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "COUNTRY_CODE": {
+          "type": "NUMBER",
+          "index": 1,
+          "name": "COUNTRY_CODE",
+          "comment": null
+        },
+        "CONFIRMED_COUNT": {
+          "type": "NUMBER",
+          "index": 2,
+          "name": "CONFIRMED_COUNT",
+          "comment": null
+        },
+        "RECOVERED_COUNT": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "RECOVERED_COUNT",
+          "comment": null
+        },
+        "DEATHS_COUNT": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "DEATHS_COUNT",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 5,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.dw_dim_locations": {
+      "unique_id": "model.dbt_experiments.dw_dim_locations",
+      "metadata": {
+        "type": "table",
+        "schema": "DATA_WAREHOUSE",
+        "name": "DW_DIM_LOCATIONS",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "LOCATION_ID": {
+          "type": "NUMBER",
+          "index": 1,
+          "name": "LOCATION_ID",
+          "comment": null
+        },
+        "ISO_2_COUNTRY_CODE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "ISO_2_COUNTRY_CODE",
+          "comment": null
+        },
+        "ISO_3_COUNTRY_CODE": {
+          "type": "TEXT",
+          "index": 3,
+          "name": "ISO_3_COUNTRY_CODE",
+          "comment": null
+        },
+        "ADMIN_NAME": {
+          "type": "TEXT",
+          "index": 4,
+          "name": "ADMIN_NAME",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 5,
+          "name": "STATE",
+          "comment": null
+        },
+        "COUNTRY": {
+          "type": "TEXT",
+          "index": 6,
+          "name": "COUNTRY",
+          "comment": null
+        },
+        "COUNTRY_STATE": {
+          "type": "TEXT",
+          "index": 7,
+          "name": "COUNTRY_STATE",
+          "comment": null
+        },
+        "LATITUDE": {
+          "type": "FLOAT",
+          "index": 8,
+          "name": "LATITUDE",
+          "comment": null
+        },
+        "LONGITUDE": {
+          "type": "FLOAT",
+          "index": 9,
+          "name": "LONGITUDE",
+          "comment": null
+        },
+        "COUNTRY_CODE": {
+          "type": "NUMBER",
+          "index": 10,
+          "name": "COUNTRY_CODE",
+          "comment": null
+        },
+        "FIPS": {
+          "type": "NUMBER",
+          "index": 11,
+          "name": "FIPS",
+          "comment": null
+        },
+        "POPULATION": {
+          "type": "NUMBER",
+          "index": 12,
+          "name": "POPULATION",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.dw_fct_country_pivoted_cases": {
+      "unique_id": "model.dbt_experiments.dw_fct_country_pivoted_cases",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_WAREHOUSE",
+        "name": "DW_FCT_COUNTRY_PIVOTED_CASES",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "CHINA": {
+          "type": "NUMBER",
+          "index": 1,
+          "name": "CHINA",
+          "comment": null
+        },
+        "US": {
+          "type": "NUMBER",
+          "index": 2,
+          "name": "US",
+          "comment": null
+        },
+        "ITALY": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "ITALY",
+          "comment": null
+        },
+        "FRANCE": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "FRANCE",
+          "comment": null
+        },
+        "GERMANY": {
+          "type": "NUMBER",
+          "index": 5,
+          "name": "GERMANY",
+          "comment": null
+        },
+        "SPAIN": {
+          "type": "NUMBER",
+          "index": 6,
+          "name": "SPAIN",
+          "comment": null
+        },
+        "IRAN": {
+          "type": "NUMBER",
+          "index": 7,
+          "name": "IRAN",
+          "comment": null
+        },
+        "AUSTRALIA": {
+          "type": "NUMBER",
+          "index": 8,
+          "name": "AUSTRALIA",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 9,
+          "name": "RECORDED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.us_metrics_per_day": {
+      "unique_id": "model.dbt_experiments.us_metrics_per_day",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_MART",
+        "name": "US_METRICS_PER_DAY",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 1,
+          "name": "RECORDED_DATE",
+          "comment": null
+        },
+        "TOTAL_DEATHS": {
+          "type": "NUMBER",
+          "index": 2,
+          "name": "TOTAL_DEATHS",
+          "comment": null
+        },
+        "TOTAL_CONFIRMED_CASES": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "TOTAL_CONFIRMED_CASES",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.worldwide_countries_aggregated_daily": {
+      "unique_id": "model.dbt_experiments.worldwide_countries_aggregated_daily",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_MART",
+        "name": "WORLDWIDE_COUNTRIES_AGGREGATED_DAILY",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "COUNTRY": {
+          "type": "TEXT",
+          "index": 1,
+          "name": "COUNTRY",
+          "comment": null
+        },
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 2,
+          "name": "RECORDED_DATE",
+          "comment": null
+        },
+        "CONFIRMED_CASES": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "CONFIRMED_CASES",
+          "comment": null
+        },
+        "RECOVERED_CASES": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "RECOVERED_CASES",
+          "comment": null
+        },
+        "DEATHS": {
+          "type": "NUMBER",
+          "index": 5,
+          "name": "DEATHS",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.australia_daily_aggregated": {
+      "unique_id": "model.dbt_experiments.australia_daily_aggregated",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_MART",
+        "name": "AUSTRALIA_DAILY_AGGREGATED",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 1,
+          "name": "RECORDED_DATE",
+          "comment": null
+        },
+        "CONFIRMED_CASES_COUNT": {
+          "type": "NUMBER",
+          "index": 2,
+          "name": "CONFIRMED_CASES_COUNT",
+          "comment": null
+        },
+        "RECOVERED": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "RECOVERED",
+          "comment": null
+        },
+        "DEATHS": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "DEATHS",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.austraila_recordings_daily": {
+      "unique_id": "model.dbt_experiments.austraila_recordings_daily",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_MART",
+        "name": "AUSTRAILA_RECORDINGS_DAILY",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 1,
+          "name": "RECORDED_DATE",
+          "comment": null
+        },
+        "STATE": {
+          "type": "TEXT",
+          "index": 2,
+          "name": "STATE",
+          "comment": null
+        },
+        "CONFIRMED": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "CONFIRMED",
+          "comment": null
+        },
+        "RECOVERED": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "RECOVERED",
+          "comment": null
+        },
+        "DEATHS": {
+          "type": "NUMBER",
+          "index": 5,
+          "name": "DEATHS",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "model.dbt_experiments.worldwide_aggregated_daily": {
+      "unique_id": "model.dbt_experiments.worldwide_aggregated_daily",
+      "metadata": {
+        "type": "view",
+        "schema": "DATA_MART",
+        "name": "WORLDWIDE_AGGREGATED_DAILY",
+        "database": "COVID",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "RECORDED_DATE": {
+          "type": "DATE",
+          "index": 1,
+          "name": "RECORDED_DATE",
+          "comment": null
+        },
+        "CONFIRMED_CASES": {
+          "type": "NUMBER",
+          "index": 2,
+          "name": "CONFIRMED_CASES",
+          "comment": null
+        },
+        "RECOVERED_CASES": {
+          "type": "NUMBER",
+          "index": 3,
+          "name": "RECOVERED_CASES",
+          "comment": null
+        },
+        "DEATHS": {
+          "type": "NUMBER",
+          "index": 4,
+          "name": "DEATHS",
+          "comment": null
+        },
+        "PERCENTAGE_INCREASE_CONFIRMED_CASES": {
+          "type": "FLOAT",
+          "index": 5,
+          "name": "PERCENTAGE_INCREASE_CONFIRMED_CASES",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    }
+  },
+  "sources": {},
+  "errors": null
+}
