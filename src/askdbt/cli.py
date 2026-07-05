@@ -4,9 +4,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
-
 import click
-
 from .config import Config
 from .indexer import Indexer
 from .parser import ManifestParser
