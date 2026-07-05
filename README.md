@@ -1,148 +1,122 @@
 # askdbt
 
-AI-powered data dictionary chatbot for your dbt project — runs **100% locally** via Ollama. No data leaves your organisation.
-
-## What it does
-
-Point `askdbt` at your `manifest.json` and it will:
-
-1. Parse every dbt model and its column-level documentation
-2. Embed models as vector chunks using `sentence-transformers`
-3. Store them in Qdrant (or pgvector)
-4. Answer plain-English questions via a local Ollama LLM
+AI-powered data dictionary chatbot for your dbt project — runs **100% locally** via Ollama.
+No data leaves your organisation.
 
 ```
-You: What does customer_lifetime_value mean?
+You: which columns of dim_customers are not used downstream?
 
-askdbt: customer_lifetime_value in mart_customer_360 is the predicted net revenue
-the bank expects to generate from this customer over the next 36 months. It is
-calculated by a gradient boosting CLV model using product holdings, transaction
-frequency, fee income, and interest margin as inputs.
-
-Sources: mart_customer_360
+askdbt: ## Column usage analysis for `dim_customers`
+        Downstream models analysed: dim_accounts, mart_customer_360, mart_credit_risk
+        Unused downstream: `phone_number`, `postcode`
+        Used by at least one downstream model: customer_id, full_name, email_address ...
 ```
 
-## Install
+---
+
+## Full setup guide
+
+**[docs/getting-started.md](docs/getting-started.md)** — step-by-step instructions for:
+- Installing Ollama and pulling a model
+- Running Qdrant with Docker
+- Installing askdbt
+- Generating dbt artifacts (`dbt docs generate`)
+- Indexing and chatting
+
+---
+
+## Quick start (if prerequisites are already installed)
 
 ```bash
 pip install askdbt
-```
 
-Requires:
-- [Ollama](https://ollama.com) running locally (`ollama pull llama3.2`)
-- [Qdrant](https://qdrant.tech) running locally (`docker run -p 6333:6333 qdrant/qdrant`) — or use pgvector
+# Index your dbt project
+askdbt index --manifest target/manifest.json --catalog target/catalog.json
 
-## Quick start
-
-```bash
-# 1. Index your dbt project
-askdbt index --manifest target/manifest.json
-
-# 2. Chat interactively
+# Chat
 askdbt chat
-
-# 3. Or ask a single question
-askdbt ask "What is the dpd_bucket column?"
-
-# 4. Launch the Streamlit UI
-askdbt ui
 ```
 
-## Try it with the sample banking manifest
+Try it immediately with the included sample banking project:
 
 ```bash
 git clone https://github.com/raghuram36/askdbt
 cd askdbt
 pip install -e .
-askdbt index --manifest sample_data/manifest.json
+askdbt index --manifest sample_data/manifest.json --catalog sample_data/catalog.json
 askdbt chat
 ```
 
-## Programmatic use
+---
 
-```python
-from askdbt import AskDBT
+## What you can ask
 
-oracle = AskDBT(manifest_path="target/manifest.json")
-oracle.index()
+askdbt uses Ollama to classify every question — any phrasing works:
 
-answer = oracle.ask("What does customer_lifetime_value mean?")
-print(answer)
+| | Example |
+|---|---|
+| Count | "how many models?", "total fact tables" |
+| List | "show all staging models", "which models are dimensions?" |
+| Layer breakdown | "models per layer", "breakdown by layer" |
+| Dependencies | "show the dependency tree" |
+| Column usage | "which columns of dim_customers aren't used downstream?" |
+| Describe | "what does mart_credit_risk do?" |
+| SQL | "show the SQL for fct_transactions" |
+| Size | "how big is fct_transactions?", "which models have over 1M rows?" |
 
-# Full answer with sources
-result = oracle.ask_full("How is fraud rate calculated?")
-print(result.answer)
-print(result.sources)
-```
-
-## Configuration
-
-```python
-from askdbt import AskDBT, Config
-
-cfg = Config(
-    ollama_model="llama3.2",        # any model pulled via `ollama pull`
-    embedding_model="all-MiniLM-L6-v2",
-    vector_db="qdrant",             # or "pgvector"
-    qdrant_host="localhost",
-    qdrant_port=6333,
-    top_k=5,
-)
-oracle = AskDBT("target/manifest.json", config=cfg)
-```
-
-### pgvector backend
-
-```bash
-pip install "askdbt[pgvector]"
-askdbt index --manifest target/manifest.json \
-             --vector-db pgvector \
-             --pg-dsn postgresql://user:pass@localhost:5432/mydb
-```
-
-## Architecture
-
-```
-manifest.json
-    │
-    ▼
-ManifestParser          ← parser.py
-    │ ModelChunk per model (name, description, columns, tags, …)
-    ▼
-Indexer                 ← indexer.py
-    │ sentence-transformers (all-MiniLM-L6-v2, 384-dim)
-    │ upsert into Qdrant or pgvector
-    ▼
-Retriever               ← retriever.py
-    │ embed query → cosine similarity search → top-k chunks
-    │ build prompt → Ollama (llama3.2)
-    ▼
-Answer (text + sources)
-```
+---
 
 ## CLI reference
 
 ```
-askdbt index   --manifest PATH [--catalog PATH] [--vector-db qdrant|pgvector]
-askdbt ask     QUESTION
+askdbt index   --manifest PATH [--catalog PATH] [--recreate] [--vector-db qdrant|pgvector]
+askdbt ask     "QUESTION"
 askdbt chat
 askdbt ui
 ```
 
+---
+
+## Architecture
+
+```
+manifest.json + catalog.json
+        │
+        ▼
+  ManifestParser  →  ModelChunk (SQL, columns, deps, child_ids, stats)
+        │
+        ▼
+    Indexer  →  sentence-transformers (384-dim)  →  Qdrant / pgvector
+        │
+        ▼
+  Retriever
+        ├── Ollama classifies intent (count / list / deps / column_usage / general)
+        ├── Meta questions  →  answered directly from vector store (exact)
+        └── General questions  →  cosine search → top-k chunks → Ollama answer
+```
+
+---
+
 ## Why it's safe
 
-- `manifest.json` contains only metadata — model names, descriptions, column names. No actual data rows, no PII.
+- `manifest.json` contains only metadata — model names, descriptions, SQL, column names. No actual data rows, no PII from your warehouse.
 - Everything runs locally. Ollama never calls an external API.
 - Nothing is sent outside your network.
+
+---
 
 ## Development
 
 ```bash
+git clone https://github.com/raghuram36/askdbt
+cd askdbt
 pip install -e ".[dev]"
 pytest
 ruff check src/
 mypy src/
 ```
+
+---
 
 ## License
 
