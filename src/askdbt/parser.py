@@ -30,10 +30,13 @@ class ModelChunk:
     owner: str
     refresh_frequency: str
     depends_on: list[str]
+    child_ids: list[str]          # unique_ids of models that read from this model
     file_path: str
     row_count: Optional[int] = None
     size_bytes: Optional[int] = None
     last_modified: Optional[str] = None
+    raw_sql: Optional[str] = None
+    compiled_sql: Optional[str] = None
 
     def to_text(self) -> str:
         """Render chunk as a flat prose string for embedding."""
@@ -61,6 +64,11 @@ class ModelChunk:
             lines.append("")
             lines.append(f"Depends on: {', '.join(self.depends_on)}")
 
+        if self.raw_sql:
+            lines.append("")
+            lines.append("SQL:")
+            lines.append(self.raw_sql)
+
         return "\n".join(lines)
 
     def to_metadata(self) -> dict:
@@ -86,15 +94,26 @@ class ManifestParser:
         if self.catalog_path and self.catalog_path.exists():
             catalog = json.loads(self.catalog_path.read_text())
 
+        # Build child_map: unique_id → [child unique_ids] from manifest if present,
+        # otherwise derive it by inverting depends_on across all model nodes.
+        child_map: dict[str, list[str]] = manifest.get("child_map", {})
+        if not child_map:
+            for node_id, node in manifest.get("nodes", {}).items():
+                if node.get("resource_type") != "model":
+                    continue
+                for parent in node.get("depends_on", {}).get("nodes", []):
+                    child_map.setdefault(parent, []).append(node_id)
+
         chunks = []
         for node_id, node in manifest.get("nodes", {}).items():
             if node.get("resource_type") != "model":
                 continue
-            chunks.append(self._parse_node(node, catalog))
+            child_ids = [c for c in child_map.get(node_id, []) if c.startswith("model.")]
+            chunks.append(self._parse_node(node, catalog, child_ids))
 
         return chunks
 
-    def _parse_node(self, node: dict, catalog: dict) -> ModelChunk:
+    def _parse_node(self, node: dict, catalog: dict, child_ids: list[str] | None = None) -> ModelChunk:
         catalog_cols = {}
         if catalog:
             cat_node = catalog.get("nodes", {}).get(node["unique_id"], {})
@@ -147,8 +166,11 @@ class ManifestParser:
             owner=meta.get("owner", ""),
             refresh_frequency=meta.get("refresh_frequency", ""),
             depends_on=deps,
+            child_ids=child_ids or [],
             file_path=node.get("original_file_path", ""),
             row_count=cat_stats.get("row_count"),
             size_bytes=cat_stats.get("bytes"),
             last_modified=cat_stats.get("last_modified"),
+            raw_sql=node.get("raw_code") or node.get("raw_sql"),
+            compiled_sql=node.get("compiled_code") or node.get("compiled_sql"),
         )

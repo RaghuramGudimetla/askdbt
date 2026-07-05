@@ -37,7 +37,8 @@ def cli():
 @click.option("--pg-dsn", default=None, help="PostgreSQL DSN for pgvector backend")
 @click.option("--embedding-model", default="all-MiniLM-L6-v2", show_default=True)
 @click.option("--ollama-model", default="llama3.2", show_default=True)
-def index(manifest, catalog, vector_db, qdrant_host, qdrant_port, qdrant_collection, pg_dsn, embedding_model, ollama_model):
+@click.option("--recreate", is_flag=True, default=False, help="Drop and recreate the collection before indexing.")
+def index(manifest, catalog, vector_db, qdrant_host, qdrant_port, qdrant_collection, pg_dsn, embedding_model, ollama_model, recreate):
     """Parse manifest.json and index all models into the vector store."""
     click.echo(f"Parsing {manifest} ...")
     parser = ManifestParser(manifest, catalog)
@@ -54,8 +55,11 @@ def index(manifest, catalog, vector_db, qdrant_host, qdrant_port, qdrant_collect
         ollama_model=ollama_model,
     )
 
+    if recreate:
+        click.secho("  Dropping existing collection...", fg="yellow")
+
     indexer = Indexer(cfg)
-    n = indexer.index(chunks)
+    n = indexer.index(chunks, recreate=recreate)
     click.secho(f"  Indexed {n} models into {vector_db}.", fg="green")
 
 

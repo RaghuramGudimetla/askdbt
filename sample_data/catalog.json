@@ -2,184 +2,104 @@
   "metadata": {
     "dbt_schema_version": "https://schemas.getdbt.com/dbt/catalog/v1.json",
     "dbt_version": "1.7.10",
-    "generated_at": "2024-03-21T11:06:50.000000Z",
-    "invocation_id": "f9fa9220-2f48-4992-b475-e9c42081f4ce",
+    "generated_at": "2024-03-21T10:05:00.000000Z",
+    "invocation_id": "b8f3a1c2-4d5e-6f7a-8b9c-0d1e2f3a4b5c",
     "env": {}
   },
   "nodes": {
-    "model.dbt_experiments.stg_covid__us_deaths": {
-      "unique_id": "model.dbt_experiments.stg_covid__us_deaths",
+    "model.banking.stg_customers": {
+      "unique_id": "model.banking.stg_customers",
       "metadata": {
-        "type": "view",
+        "type": "VIEW",
         "schema": "STAGING",
-        "name": "STG_COVID__US_DEATHS",
-        "database": "COVID",
+        "name": "STG_CUSTOMERS",
+        "database": "WAREHOUSE",
         "comment": null,
         "owner": "DBT_USER"
       },
       "columns": {
-        "ADMIN_NAME": {
-          "type": "TEXT",
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
           "index": 1,
-          "name": "ADMIN_NAME",
+          "name": "CUSTOMER_ID",
           "comment": null
         },
-        "STATE": {
-          "type": "TEXT",
+        "CUSTOMER_NUMBER": {
+          "type": "TEXT(20)",
           "index": 2,
-          "name": "STATE",
+          "name": "CUSTOMER_NUMBER",
           "comment": null
         },
-        "NUMBER_OF_CASES": {
-          "type": "NUMBER",
+        "FIRST_NAME": {
+          "type": "TEXT(100)",
           "index": 3,
-          "name": "NUMBER_OF_CASES",
+          "name": "FIRST_NAME",
           "comment": null
         },
-        "RECORDED_DATE": {
-          "type": "DATE",
+        "LAST_NAME": {
+          "type": "TEXT(100)",
           "index": 4,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.stg_covid__us_confirmed": {
-      "unique_id": "model.dbt_experiments.stg_covid__us_confirmed",
-      "metadata": {
-        "type": "view",
-        "schema": "STAGING",
-        "name": "STG_COVID__US_CONFIRMED",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "ADMIN_NAME": {
-          "type": "TEXT",
-          "index": 1,
-          "name": "ADMIN_NAME",
+          "name": "LAST_NAME",
           "comment": null
         },
-        "STATE": {
-          "type": "TEXT",
-          "index": 2,
-          "name": "STATE",
-          "comment": null
-        },
-        "NUMBER_OF_CASES": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "NUMBER_OF_CASES",
-          "comment": null
-        },
-        "RECORDED_DATE": {
-          "type": "DATE",
-          "index": 4,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.stg_covid__location_reference": {
-      "unique_id": "model.dbt_experiments.stg_covid__location_reference",
-      "metadata": {
-        "type": "view",
-        "schema": "STAGING",
-        "name": "STG_COVID__LOCATION_REFERENCE",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "LOCATION_ID": {
-          "type": "NUMBER",
-          "index": 1,
-          "name": "LOCATION_ID",
-          "comment": null
-        },
-        "ISO_2_COUNTRY_CODE": {
-          "type": "TEXT",
-          "index": 2,
-          "name": "ISO_2_COUNTRY_CODE",
-          "comment": null
-        },
-        "ISO_3_COUNTRY_CODE": {
-          "type": "TEXT",
-          "index": 3,
-          "name": "ISO_3_COUNTRY_CODE",
-          "comment": null
-        },
-        "ADMIN_NAME": {
-          "type": "TEXT",
-          "index": 4,
-          "name": "ADMIN_NAME",
-          "comment": null
-        },
-        "STATE": {
-          "type": "TEXT",
+        "EMAIL_ADDRESS": {
+          "type": "TEXT(255)",
           "index": 5,
-          "name": "STATE",
+          "name": "EMAIL_ADDRESS",
           "comment": null
         },
-        "COUNTRY": {
-          "type": "TEXT",
+        "PHONE_NUMBER": {
+          "type": "TEXT(20)",
           "index": 6,
-          "name": "COUNTRY",
+          "name": "PHONE_NUMBER",
           "comment": null
         },
-        "COUNTRY_STATE": {
-          "type": "TEXT",
+        "DATE_OF_BIRTH": {
+          "type": "DATE",
           "index": 7,
-          "name": "COUNTRY_STATE",
+          "name": "DATE_OF_BIRTH",
           "comment": null
         },
-        "LATITUDE": {
-          "type": "FLOAT",
+        "NATIONALITY_CODE": {
+          "type": "CHAR(2)",
           "index": 8,
-          "name": "LATITUDE",
+          "name": "NATIONALITY_CODE",
           "comment": null
         },
-        "LONGITUDE": {
-          "type": "FLOAT",
+        "CITY": {
+          "type": "TEXT(100)",
           "index": 9,
-          "name": "LONGITUDE",
+          "name": "CITY",
           "comment": null
         },
-        "COUNTRY_CODE": {
-          "type": "NUMBER",
+        "POSTCODE": {
+          "type": "TEXT(10)",
           "index": 10,
-          "name": "COUNTRY_CODE",
+          "name": "POSTCODE",
           "comment": null
         },
-        "FIPS": {
-          "type": "NUMBER",
+        "KYC_STATUS": {
+          "type": "TEXT(20)",
           "index": 11,
-          "name": "FIPS",
+          "name": "KYC_STATUS",
           "comment": null
         },
-        "POPULATION": {
-          "type": "NUMBER",
+        "IS_DELETED": {
+          "type": "BOOLEAN",
           "index": 12,
-          "name": "POPULATION",
+          "name": "IS_DELETED",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 13,
+          "name": "_LOADED_AT",
+          "comment": null
+        },
+        "_SOURCE_SYSTEM": {
+          "type": "TEXT(50)",
+          "index": 14,
+          "name": "_SOURCE_SYSTEM",
           "comment": null
         }
       },
@@ -193,545 +113,93 @@
         }
       }
     },
-    "model.dbt_experiments.stg_covid__us_simplified": {
-      "unique_id": "model.dbt_experiments.stg_covid__us_simplified",
+    "model.banking.stg_accounts": {
+      "unique_id": "model.banking.stg_accounts",
       "metadata": {
-        "type": "view",
+        "type": "VIEW",
         "schema": "STAGING",
-        "name": "STG_COVID__US_SIMPLIFIED",
-        "database": "COVID",
+        "name": "STG_ACCOUNTS",
+        "database": "WAREHOUSE",
         "comment": null,
         "owner": "DBT_USER"
       },
       "columns": {
-        "ADMIN_NAME": {
-          "type": "TEXT",
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
           "index": 1,
-          "name": "ADMIN_NAME",
+          "name": "ACCOUNT_ID",
           "comment": null
         },
-        "STATE": {
-          "type": "TEXT",
+        "ACCOUNT_NUMBER": {
+          "type": "TEXT(16)",
           "index": 2,
-          "name": "STATE",
+          "name": "ACCOUNT_NUMBER",
           "comment": null
         },
-        "CONFIRMED_CASES_COUNT": {
-          "type": "NUMBER",
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
           "index": 3,
-          "name": "CONFIRMED_CASES_COUNT",
+          "name": "CUSTOMER_ID",
           "comment": null
         },
-        "DEATHS_COUNT": {
-          "type": "NUMBER",
+        "PRODUCT_CODE": {
+          "type": "TEXT(10)",
           "index": 4,
-          "name": "DEATHS_COUNT",
+          "name": "PRODUCT_CODE",
           "comment": null
         },
-        "RECORDED_DATE": {
-          "type": "DATE",
+        "BRANCH_CODE": {
+          "type": "TEXT(10)",
           "index": 5,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.stg_covid__countries_aggregated": {
-      "unique_id": "model.dbt_experiments.stg_covid__countries_aggregated",
-      "metadata": {
-        "type": "view",
-        "schema": "STAGING",
-        "name": "STG_COVID__COUNTRIES_AGGREGATED",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "COUNTRY": {
-          "type": "TEXT",
-          "index": 1,
-          "name": "COUNTRY",
+          "name": "BRANCH_CODE",
           "comment": null
         },
-        "CONFIRMED_COUNT": {
-          "type": "NUMBER",
-          "index": 2,
-          "name": "CONFIRMED_COUNT",
-          "comment": null
-        },
-        "RECOVERED_COUNT": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "RECOVERED_COUNT",
-          "comment": null
-        },
-        "DEATHS_COUNT": {
-          "type": "NUMBER",
-          "index": 4,
-          "name": "DEATHS_COUNT",
-          "comment": null
-        },
-        "RECORDED_DATE": {
-          "type": "DATE",
-          "index": 5,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.stg_covid__time_series_covid_combined": {
-      "unique_id": "model.dbt_experiments.stg_covid__time_series_covid_combined",
-      "metadata": {
-        "type": "view",
-        "schema": "STAGING",
-        "name": "STG_COVID__TIME_SERIES_COVID_COMBINED",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "COUNTRY": {
-          "type": "TEXT",
-          "index": 1,
-          "name": "COUNTRY",
-          "comment": null
-        },
-        "STATE": {
-          "type": "TEXT",
-          "index": 2,
-          "name": "STATE",
-          "comment": null
-        },
-        "CONFIRMED": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "CONFIRMED",
-          "comment": null
-        },
-        "RECOVERED": {
-          "type": "NUMBER",
-          "index": 4,
-          "name": "RECOVERED",
-          "comment": null
-        },
-        "DEATHS": {
-          "type": "NUMBER",
-          "index": 5,
-          "name": "DEATHS",
-          "comment": null
-        },
-        "RECORDED_DATE": {
+        "OPENED_DATE": {
           "type": "DATE",
           "index": 6,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.stg_covid__worldwide_aggregated": {
-      "unique_id": "model.dbt_experiments.stg_covid__worldwide_aggregated",
-      "metadata": {
-        "type": "view",
-        "schema": "STAGING",
-        "name": "STG_COVID__WORLDWIDE_AGGREGATED",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "CONFIRMED_CASES_COUNT": {
-          "type": "NUMBER",
-          "index": 1,
-          "name": "CONFIRMED_CASES_COUNT",
+          "name": "OPENED_DATE",
           "comment": null
         },
-        "RECOVERED_CASES_COUNT": {
-          "type": "NUMBER",
-          "index": 2,
-          "name": "RECOVERED_CASES_COUNT",
-          "comment": null
-        },
-        "DEATHS_COUNT": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "DEATHS_COUNT",
-          "comment": null
-        },
-        "DAILY_CASES_INCREASE_RATE": {
-          "type": "FLOAT",
-          "index": 4,
-          "name": "DAILY_CASES_INCREASE_RATE",
-          "comment": null
-        },
-        "RECORDED_DATE": {
+        "CLOSED_DATE": {
           "type": "DATE",
-          "index": 5,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.stg_covid__key_countries_pivoted": {
-      "unique_id": "model.dbt_experiments.stg_covid__key_countries_pivoted",
-      "metadata": {
-        "type": "view",
-        "schema": "STAGING",
-        "name": "STG_COVID__KEY_COUNTRIES_PIVOTED",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "CHINA": {
-          "type": "NUMBER",
-          "index": 1,
-          "name": "CHINA",
-          "comment": null
-        },
-        "US": {
-          "type": "NUMBER",
-          "index": 2,
-          "name": "US",
-          "comment": null
-        },
-        "UK": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "UK",
-          "comment": null
-        },
-        "ITALY": {
-          "type": "NUMBER",
-          "index": 4,
-          "name": "ITALY",
-          "comment": null
-        },
-        "FRANCE": {
-          "type": "NUMBER",
-          "index": 5,
-          "name": "FRANCE",
-          "comment": null
-        },
-        "GERMANY": {
-          "type": "NUMBER",
-          "index": 6,
-          "name": "GERMANY",
-          "comment": null
-        },
-        "SPAIN": {
-          "type": "NUMBER",
           "index": 7,
-          "name": "SPAIN",
+          "name": "CLOSED_DATE",
           "comment": null
         },
-        "IRAN": {
-          "type": "NUMBER",
+        "ACCOUNT_STATUS": {
+          "type": "TEXT(20)",
           "index": 8,
-          "name": "IRAN",
+          "name": "ACCOUNT_STATUS",
           "comment": null
         },
-        "AUSTRALIA": {
-          "type": "NUMBER",
+        "CREDIT_LIMIT": {
+          "type": "NUMERIC(18,2)",
           "index": 9,
-          "name": "AUSTRALIA",
+          "name": "CREDIT_LIMIT",
           "comment": null
         },
-        "RECORDED_DATE": {
-          "type": "DATE",
+        "CURRENT_BALANCE": {
+          "type": "NUMERIC(18,2)",
           "index": 10,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.dw_fct_worldwide_recordings": {
-      "unique_id": "model.dbt_experiments.dw_fct_worldwide_recordings",
-      "metadata": {
-        "type": "view",
-        "schema": "DATA_WAREHOUSE",
-        "name": "DW_FCT_WORLDWIDE_RECORDINGS",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "COUNTRY": {
-          "type": "TEXT",
-          "index": 1,
-          "name": "COUNTRY",
+          "name": "CURRENT_BALANCE",
           "comment": null
         },
-        "STATE": {
-          "type": "TEXT",
-          "index": 2,
-          "name": "STATE",
-          "comment": null
-        },
-        "CONFIRMED": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "CONFIRMED",
-          "comment": null
-        },
-        "RECOVERED": {
-          "type": "NUMBER",
-          "index": 4,
-          "name": "RECOVERED",
-          "comment": null
-        },
-        "DEATHS": {
-          "type": "NUMBER",
-          "index": 5,
-          "name": "DEATHS",
-          "comment": null
-        },
-        "RECORDED_DATE": {
-          "type": "DATE",
-          "index": 6,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.dw_fct_us_daily_aggregations": {
-      "unique_id": "model.dbt_experiments.dw_fct_us_daily_aggregations",
-      "metadata": {
-        "type": "view",
-        "schema": "DATA_WAREHOUSE",
-        "name": "DW_FCT_US_DAILY_AGGREGATIONS",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "ADMIN_NAME": {
-          "type": "TEXT",
-          "index": 1,
-          "name": "ADMIN_NAME",
-          "comment": null
-        },
-        "STATE": {
-          "type": "TEXT",
-          "index": 2,
-          "name": "STATE",
-          "comment": null
-        },
-        "CONFIRMED_COUNT": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "CONFIRMED_COUNT",
-          "comment": null
-        },
-        "DEATHS_COUNT": {
-          "type": "NUMBER",
-          "index": 4,
-          "name": "DEATHS_COUNT",
-          "comment": null
-        },
-        "RECORDED_DATE": {
-          "type": "DATE",
-          "index": 5,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.dw_fct_aggregated_cases_by_country": {
-      "unique_id": "model.dbt_experiments.dw_fct_aggregated_cases_by_country",
-      "metadata": {
-        "type": "view",
-        "schema": "DATA_WAREHOUSE",
-        "name": "DW_FCT_AGGREGATED_CASES_BY_COUNTRY",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "COUNTRY_CODE": {
-          "type": "NUMBER",
-          "index": 1,
-          "name": "COUNTRY_CODE",
-          "comment": null
-        },
-        "CONFIRMED_COUNT": {
-          "type": "NUMBER",
-          "index": 2,
-          "name": "CONFIRMED_COUNT",
-          "comment": null
-        },
-        "RECOVERED_COUNT": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "RECOVERED_COUNT",
-          "comment": null
-        },
-        "DEATHS_COUNT": {
-          "type": "NUMBER",
-          "index": 4,
-          "name": "DEATHS_COUNT",
-          "comment": null
-        },
-        "RECORDED_DATE": {
-          "type": "DATE",
-          "index": 5,
-          "name": "RECORDED_DATE",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.dw_dim_locations": {
-      "unique_id": "model.dbt_experiments.dw_dim_locations",
-      "metadata": {
-        "type": "table",
-        "schema": "DATA_WAREHOUSE",
-        "name": "DW_DIM_LOCATIONS",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "LOCATION_ID": {
-          "type": "NUMBER",
-          "index": 1,
-          "name": "LOCATION_ID",
-          "comment": null
-        },
-        "ISO_2_COUNTRY_CODE": {
-          "type": "TEXT",
-          "index": 2,
-          "name": "ISO_2_COUNTRY_CODE",
-          "comment": null
-        },
-        "ISO_3_COUNTRY_CODE": {
-          "type": "TEXT",
-          "index": 3,
-          "name": "ISO_3_COUNTRY_CODE",
-          "comment": null
-        },
-        "ADMIN_NAME": {
-          "type": "TEXT",
-          "index": 4,
-          "name": "ADMIN_NAME",
-          "comment": null
-        },
-        "STATE": {
-          "type": "TEXT",
-          "index": 5,
-          "name": "STATE",
-          "comment": null
-        },
-        "COUNTRY": {
-          "type": "TEXT",
-          "index": 6,
-          "name": "COUNTRY",
-          "comment": null
-        },
-        "COUNTRY_STATE": {
-          "type": "TEXT",
-          "index": 7,
-          "name": "COUNTRY_STATE",
-          "comment": null
-        },
-        "LATITUDE": {
-          "type": "FLOAT",
-          "index": 8,
-          "name": "LATITUDE",
-          "comment": null
-        },
-        "LONGITUDE": {
-          "type": "FLOAT",
-          "index": 9,
-          "name": "LONGITUDE",
-          "comment": null
-        },
-        "COUNTRY_CODE": {
-          "type": "NUMBER",
-          "index": 10,
-          "name": "COUNTRY_CODE",
-          "comment": null
-        },
-        "FIPS": {
-          "type": "NUMBER",
+        "CURRENCY_CODE": {
+          "type": "CHAR(3)",
           "index": 11,
-          "name": "FIPS",
+          "name": "CURRENCY_CODE",
           "comment": null
         },
-        "POPULATION": {
-          "type": "NUMBER",
+        "IS_OVERDRAWN": {
+          "type": "BOOLEAN",
           "index": 12,
-          "name": "POPULATION",
+          "name": "IS_OVERDRAWN",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 13,
+          "name": "_LOADED_AT",
           "comment": null
         }
       },
@@ -745,69 +213,99 @@
         }
       }
     },
-    "model.dbt_experiments.dw_fct_country_pivoted_cases": {
-      "unique_id": "model.dbt_experiments.dw_fct_country_pivoted_cases",
+    "model.banking.stg_transactions": {
+      "unique_id": "model.banking.stg_transactions",
       "metadata": {
-        "type": "view",
-        "schema": "DATA_WAREHOUSE",
-        "name": "DW_FCT_COUNTRY_PIVOTED_CASES",
-        "database": "COVID",
+        "type": "BASE TABLE",
+        "schema": "STAGING",
+        "name": "STG_TRANSACTIONS",
+        "database": "WAREHOUSE",
         "comment": null,
         "owner": "DBT_USER"
       },
       "columns": {
-        "CHINA": {
-          "type": "NUMBER",
+        "TRANSACTION_ID": {
+          "type": "TEXT(36)",
           "index": 1,
-          "name": "CHINA",
+          "name": "TRANSACTION_ID",
           "comment": null
         },
-        "US": {
-          "type": "NUMBER",
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
           "index": 2,
-          "name": "US",
+          "name": "ACCOUNT_ID",
           "comment": null
         },
-        "ITALY": {
-          "type": "NUMBER",
+        "TRANSACTION_DATE": {
+          "type": "DATE",
           "index": 3,
-          "name": "ITALY",
+          "name": "TRANSACTION_DATE",
           "comment": null
         },
-        "FRANCE": {
-          "type": "NUMBER",
+        "TRANSACTION_DATETIME": {
+          "type": "TIMESTAMPTZ",
           "index": 4,
-          "name": "FRANCE",
+          "name": "TRANSACTION_DATETIME",
           "comment": null
         },
-        "GERMANY": {
-          "type": "NUMBER",
+        "TRANSACTION_TYPE": {
+          "type": "TEXT(30)",
           "index": 5,
-          "name": "GERMANY",
+          "name": "TRANSACTION_TYPE",
           "comment": null
         },
-        "SPAIN": {
-          "type": "NUMBER",
+        "CHANNEL": {
+          "type": "TEXT(20)",
           "index": 6,
-          "name": "SPAIN",
+          "name": "CHANNEL",
           "comment": null
         },
-        "IRAN": {
-          "type": "NUMBER",
+        "AMOUNT": {
+          "type": "NUMERIC(18,2)",
           "index": 7,
-          "name": "IRAN",
+          "name": "AMOUNT",
           "comment": null
         },
-        "AUSTRALIA": {
-          "type": "NUMBER",
+        "CURRENCY_CODE": {
+          "type": "CHAR(3)",
           "index": 8,
-          "name": "AUSTRALIA",
+          "name": "CURRENCY_CODE",
           "comment": null
         },
-        "RECORDED_DATE": {
-          "type": "DATE",
+        "DIRECTION": {
+          "type": "TEXT(6)",
           "index": 9,
-          "name": "RECORDED_DATE",
+          "name": "DIRECTION",
+          "comment": null
+        },
+        "MERCHANT_NAME": {
+          "type": "TEXT(200)",
+          "index": 10,
+          "name": "MERCHANT_NAME",
+          "comment": null
+        },
+        "MCC": {
+          "type": "TEXT(4)",
+          "index": 11,
+          "name": "MCC",
+          "comment": null
+        },
+        "RUNNING_BALANCE": {
+          "type": "NUMERIC(18,2)",
+          "index": 12,
+          "name": "RUNNING_BALANCE",
+          "comment": null
+        },
+        "IS_FLAGGED_FRAUD": {
+          "type": "BOOLEAN",
+          "index": 13,
+          "name": "IS_FLAGGED_FRAUD",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 14,
+          "name": "_LOADED_AT",
           "comment": null
         }
       },
@@ -815,91 +313,108 @@
         "has_stats": {
           "id": "has_stats",
           "label": "Has Stats?",
-          "value": false,
+          "value": true,
           "include": false,
           "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 48640000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 15032385536,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
         }
       }
     },
-    "model.dbt_experiments.us_metrics_per_day": {
-      "unique_id": "model.dbt_experiments.us_metrics_per_day",
+    "model.banking.stg_loan_schedule": {
+      "unique_id": "model.banking.stg_loan_schedule",
       "metadata": {
-        "type": "view",
-        "schema": "DATA_MART",
-        "name": "US_METRICS_PER_DAY",
-        "database": "COVID",
+        "type": "VIEW",
+        "schema": "STAGING",
+        "name": "STG_LOAN_SCHEDULE",
+        "database": "WAREHOUSE",
         "comment": null,
         "owner": "DBT_USER"
       },
       "columns": {
-        "RECORDED_DATE": {
-          "type": "DATE",
+        "LOAN_SCHEDULE_ID": {
+          "type": "TEXT(36)",
           "index": 1,
-          "name": "RECORDED_DATE",
+          "name": "LOAN_SCHEDULE_ID",
           "comment": null
         },
-        "TOTAL_DEATHS": {
-          "type": "NUMBER",
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
           "index": 2,
-          "name": "TOTAL_DEATHS",
+          "name": "ACCOUNT_ID",
           "comment": null
         },
-        "TOTAL_CONFIRMED_CASES": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "TOTAL_CONFIRMED_CASES",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.worldwide_countries_aggregated_daily": {
-      "unique_id": "model.dbt_experiments.worldwide_countries_aggregated_daily",
-      "metadata": {
-        "type": "view",
-        "schema": "DATA_MART",
-        "name": "WORLDWIDE_COUNTRIES_AGGREGATED_DAILY",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "COUNTRY": {
-          "type": "TEXT",
-          "index": 1,
-          "name": "COUNTRY",
-          "comment": null
-        },
-        "RECORDED_DATE": {
+        "DUE_DATE": {
           "type": "DATE",
-          "index": 2,
-          "name": "RECORDED_DATE",
-          "comment": null
-        },
-        "CONFIRMED_CASES": {
-          "type": "NUMBER",
           "index": 3,
-          "name": "CONFIRMED_CASES",
+          "name": "DUE_DATE",
           "comment": null
         },
-        "RECOVERED_CASES": {
-          "type": "NUMBER",
+        "PAID_DATE": {
+          "type": "DATE",
           "index": 4,
-          "name": "RECOVERED_CASES",
+          "name": "PAID_DATE",
           "comment": null
         },
-        "DEATHS": {
-          "type": "NUMBER",
+        "PRINCIPAL_DUE": {
+          "type": "NUMERIC(18,2)",
           "index": 5,
-          "name": "DEATHS",
+          "name": "PRINCIPAL_DUE",
+          "comment": null
+        },
+        "INTEREST_DUE": {
+          "type": "NUMERIC(18,2)",
+          "index": 6,
+          "name": "INTEREST_DUE",
+          "comment": null
+        },
+        "PRINCIPAL_PAID": {
+          "type": "NUMERIC(18,2)",
+          "index": 7,
+          "name": "PRINCIPAL_PAID",
+          "comment": null
+        },
+        "INTEREST_PAID": {
+          "type": "NUMERIC(18,2)",
+          "index": 8,
+          "name": "INTEREST_PAID",
+          "comment": null
+        },
+        "REPAYMENT_STATUS": {
+          "type": "TEXT(20)",
+          "index": 9,
+          "name": "REPAYMENT_STATUS",
+          "comment": null
+        },
+        "INSTALLMENT_NUMBER": {
+          "type": "INTEGER",
+          "index": 10,
+          "name": "INSTALLMENT_NUMBER",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 11,
+          "name": "_LOADED_AT",
           "comment": null
         }
       },
@@ -913,91 +428,69 @@
         }
       }
     },
-    "model.dbt_experiments.australia_daily_aggregated": {
-      "unique_id": "model.dbt_experiments.australia_daily_aggregated",
+    "model.banking.stg_kyc_verifications": {
+      "unique_id": "model.banking.stg_kyc_verifications",
       "metadata": {
-        "type": "view",
-        "schema": "DATA_MART",
-        "name": "AUSTRALIA_DAILY_AGGREGATED",
-        "database": "COVID",
+        "type": "VIEW",
+        "schema": "STAGING",
+        "name": "STG_KYC_VERIFICATIONS",
+        "database": "WAREHOUSE",
         "comment": null,
         "owner": "DBT_USER"
       },
       "columns": {
-        "RECORDED_DATE": {
-          "type": "DATE",
+        "VERIFICATION_ID": {
+          "type": "TEXT(36)",
           "index": 1,
-          "name": "RECORDED_DATE",
+          "name": "VERIFICATION_ID",
           "comment": null
         },
-        "CONFIRMED_CASES_COUNT": {
-          "type": "NUMBER",
+        "CUSTOMER_NUMBER": {
+          "type": "TEXT(20)",
           "index": 2,
-          "name": "CONFIRMED_CASES_COUNT",
+          "name": "CUSTOMER_NUMBER",
           "comment": null
         },
-        "RECOVERED": {
-          "type": "NUMBER",
+        "VERIFICATION_STATUS": {
+          "type": "TEXT(20)",
           "index": 3,
-          "name": "RECOVERED",
+          "name": "VERIFICATION_STATUS",
           "comment": null
         },
-        "DEATHS": {
-          "type": "NUMBER",
+        "PROVIDER": {
+          "type": "TEXT(50)",
           "index": 4,
-          "name": "DEATHS",
-          "comment": null
-        }
-      },
-      "stats": {
-        "has_stats": {
-          "id": "has_stats",
-          "label": "Has Stats?",
-          "value": false,
-          "include": false,
-          "description": "Indicates whether statistics are available for this table"
-        }
-      }
-    },
-    "model.dbt_experiments.austraila_recordings_daily": {
-      "unique_id": "model.dbt_experiments.austraila_recordings_daily",
-      "metadata": {
-        "type": "view",
-        "schema": "DATA_MART",
-        "name": "AUSTRAILA_RECORDINGS_DAILY",
-        "database": "COVID",
-        "comment": null,
-        "owner": "DBT_USER"
-      },
-      "columns": {
-        "RECORDED_DATE": {
-          "type": "DATE",
-          "index": 1,
-          "name": "RECORDED_DATE",
+          "name": "PROVIDER",
           "comment": null
         },
-        "STATE": {
-          "type": "TEXT",
-          "index": 2,
-          "name": "STATE",
-          "comment": null
-        },
-        "CONFIRMED": {
-          "type": "NUMBER",
-          "index": 3,
-          "name": "CONFIRMED",
-          "comment": null
-        },
-        "RECOVERED": {
-          "type": "NUMBER",
-          "index": 4,
-          "name": "RECOVERED",
-          "comment": null
-        },
-        "DEATHS": {
-          "type": "NUMBER",
+        "VERIFIED_AT": {
+          "type": "TIMESTAMPTZ",
           "index": 5,
-          "name": "DEATHS",
+          "name": "VERIFIED_AT",
+          "comment": null
+        },
+        "EXPIRES_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 6,
+          "name": "EXPIRES_AT",
+          "comment": null
+        },
+        "RISK_SCORE": {
+          "type": "NUMERIC(5,2)",
+          "index": 7,
+          "name": "RISK_SCORE",
+          "comment": null
+        },
+        "RISK_TIER": {
+          "type": "TEXT(10)",
+          "index": 8,
+          "name": "RISK_TIER",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 9,
+          "name": "_LOADED_AT",
           "comment": null
         }
       },
@@ -1011,48 +504,1982 @@
         }
       }
     },
-    "model.dbt_experiments.worldwide_aggregated_daily": {
-      "unique_id": "model.dbt_experiments.worldwide_aggregated_daily",
+    "model.banking.dim_customers": {
+      "unique_id": "model.banking.dim_customers",
       "metadata": {
-        "type": "view",
-        "schema": "DATA_MART",
-        "name": "WORLDWIDE_AGGREGATED_DAILY",
-        "database": "COVID",
+        "type": "BASE TABLE",
+        "schema": "DIMENSIONS",
+        "name": "DIM_CUSTOMERS",
+        "database": "WAREHOUSE",
         "comment": null,
         "owner": "DBT_USER"
       },
       "columns": {
-        "RECORDED_DATE": {
-          "type": "DATE",
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
           "index": 1,
-          "name": "RECORDED_DATE",
+          "name": "CUSTOMER_ID",
           "comment": null
         },
-        "CONFIRMED_CASES": {
-          "type": "NUMBER",
+        "CUSTOMER_NUMBER": {
+          "type": "TEXT(20)",
           "index": 2,
-          "name": "CONFIRMED_CASES",
+          "name": "CUSTOMER_NUMBER",
           "comment": null
         },
-        "RECOVERED_CASES": {
-          "type": "NUMBER",
+        "FIRST_NAME": {
+          "type": "TEXT(100)",
           "index": 3,
-          "name": "RECOVERED_CASES",
+          "name": "FIRST_NAME",
           "comment": null
         },
-        "DEATHS": {
-          "type": "NUMBER",
+        "LAST_NAME": {
+          "type": "TEXT(100)",
           "index": 4,
-          "name": "DEATHS",
+          "name": "LAST_NAME",
           "comment": null
         },
-        "PERCENTAGE_INCREASE_CONFIRMED_CASES": {
-          "type": "FLOAT",
+        "FULL_NAME": {
+          "type": "TEXT(200)",
           "index": 5,
-          "name": "PERCENTAGE_INCREASE_CONFIRMED_CASES",
+          "name": "FULL_NAME",
+          "comment": null
+        },
+        "EMAIL_ADDRESS": {
+          "type": "TEXT(255)",
+          "index": 6,
+          "name": "EMAIL_ADDRESS",
+          "comment": null
+        },
+        "PHONE_NUMBER": {
+          "type": "TEXT(20)",
+          "index": 7,
+          "name": "PHONE_NUMBER",
+          "comment": null
+        },
+        "DATE_OF_BIRTH": {
+          "type": "DATE",
+          "index": 8,
+          "name": "DATE_OF_BIRTH",
+          "comment": null
+        },
+        "AGE": {
+          "type": "INTEGER",
+          "index": 9,
+          "name": "AGE",
+          "comment": null
+        },
+        "NATIONALITY_CODE": {
+          "type": "CHAR(2)",
+          "index": 10,
+          "name": "NATIONALITY_CODE",
+          "comment": null
+        },
+        "CITY": {
+          "type": "TEXT(100)",
+          "index": 11,
+          "name": "CITY",
+          "comment": null
+        },
+        "POSTCODE": {
+          "type": "TEXT(10)",
+          "index": 12,
+          "name": "POSTCODE",
+          "comment": null
+        },
+        "KYC_STATUS": {
+          "type": "TEXT(20)",
+          "index": 13,
+          "name": "KYC_STATUS",
+          "comment": null
+        },
+        "KYC_VERIFICATION_STATUS": {
+          "type": "TEXT(20)",
+          "index": 14,
+          "name": "KYC_VERIFICATION_STATUS",
+          "comment": null
+        },
+        "RISK_SCORE": {
+          "type": "NUMERIC(5,2)",
+          "index": 15,
+          "name": "RISK_SCORE",
+          "comment": null
+        },
+        "RISK_TIER": {
+          "type": "TEXT(10)",
+          "index": 16,
+          "name": "RISK_TIER",
+          "comment": null
+        },
+        "KYC_VERIFIED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 17,
+          "name": "KYC_VERIFIED_AT",
+          "comment": null
+        },
+        "KYC_EXPIRES_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 18,
+          "name": "KYC_EXPIRES_AT",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 19,
+          "name": "_LOADED_AT",
+          "comment": null
+        },
+        "DBT_UPDATED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 20,
+          "name": "DBT_UPDATED_AT",
           "comment": null
         }
       },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 245000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 52428800,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.dim_accounts": {
+      "unique_id": "model.banking.dim_accounts",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "DIMENSIONS",
+        "name": "DIM_ACCOUNTS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
+          "index": 1,
+          "name": "ACCOUNT_ID",
+          "comment": null
+        },
+        "ACCOUNT_NUMBER": {
+          "type": "TEXT(16)",
+          "index": 2,
+          "name": "ACCOUNT_NUMBER",
+          "comment": null
+        },
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 3,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "CUSTOMER_NAME": {
+          "type": "TEXT(200)",
+          "index": 4,
+          "name": "CUSTOMER_NAME",
+          "comment": null
+        },
+        "CUSTOMER_RISK_TIER": {
+          "type": "TEXT(10)",
+          "index": 5,
+          "name": "CUSTOMER_RISK_TIER",
+          "comment": null
+        },
+        "PRODUCT_CODE": {
+          "type": "TEXT(10)",
+          "index": 6,
+          "name": "PRODUCT_CODE",
+          "comment": null
+        },
+        "PRODUCT_NAME": {
+          "type": "TEXT(100)",
+          "index": 7,
+          "name": "PRODUCT_NAME",
+          "comment": null
+        },
+        "PRODUCT_CATEGORY": {
+          "type": "TEXT(30)",
+          "index": 8,
+          "name": "PRODUCT_CATEGORY",
+          "comment": null
+        },
+        "INTEREST_RATE_PCT": {
+          "type": "NUMERIC(6,4)",
+          "index": 9,
+          "name": "INTEREST_RATE_PCT",
+          "comment": null
+        },
+        "BRANCH_CODE": {
+          "type": "TEXT(10)",
+          "index": 10,
+          "name": "BRANCH_CODE",
+          "comment": null
+        },
+        "OPENED_DATE": {
+          "type": "DATE",
+          "index": 11,
+          "name": "OPENED_DATE",
+          "comment": null
+        },
+        "CLOSED_DATE": {
+          "type": "DATE",
+          "index": 12,
+          "name": "CLOSED_DATE",
+          "comment": null
+        },
+        "ACCOUNT_STATUS": {
+          "type": "TEXT(20)",
+          "index": 13,
+          "name": "ACCOUNT_STATUS",
+          "comment": null
+        },
+        "CREDIT_LIMIT": {
+          "type": "NUMERIC(18,2)",
+          "index": 14,
+          "name": "CREDIT_LIMIT",
+          "comment": null
+        },
+        "CURRENT_BALANCE": {
+          "type": "NUMERIC(18,2)",
+          "index": 15,
+          "name": "CURRENT_BALANCE",
+          "comment": null
+        },
+        "CURRENCY_CODE": {
+          "type": "CHAR(3)",
+          "index": 16,
+          "name": "CURRENCY_CODE",
+          "comment": null
+        },
+        "IS_OVERDRAWN": {
+          "type": "BOOLEAN",
+          "index": 17,
+          "name": "IS_OVERDRAWN",
+          "comment": null
+        },
+        "ACCOUNT_HEALTH": {
+          "type": "TEXT(20)",
+          "index": 18,
+          "name": "ACCOUNT_HEALTH",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 19,
+          "name": "_LOADED_AT",
+          "comment": null
+        },
+        "DBT_UPDATED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 20,
+          "name": "DBT_UPDATED_AT",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 412000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 89128960,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.dim_products": {
+      "unique_id": "model.banking.dim_products",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "DIMENSIONS",
+        "name": "DIM_PRODUCTS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "PRODUCT_CODE": {
+          "type": "TEXT(10)",
+          "index": 1,
+          "name": "PRODUCT_CODE",
+          "comment": null
+        },
+        "PRODUCT_NAME": {
+          "type": "TEXT(100)",
+          "index": 2,
+          "name": "PRODUCT_NAME",
+          "comment": null
+        },
+        "PRODUCT_CATEGORY": {
+          "type": "TEXT(30)",
+          "index": 3,
+          "name": "PRODUCT_CATEGORY",
+          "comment": null
+        },
+        "PRODUCT_TYPE": {
+          "type": "TEXT(30)",
+          "index": 4,
+          "name": "PRODUCT_TYPE",
+          "comment": null
+        },
+        "INTEREST_RATE_PCT": {
+          "type": "NUMERIC(6,4)",
+          "index": 5,
+          "name": "INTEREST_RATE_PCT",
+          "comment": null
+        },
+        "ANNUAL_FEE": {
+          "type": "NUMERIC(10,2)",
+          "index": 6,
+          "name": "ANNUAL_FEE",
+          "comment": null
+        },
+        "MIN_CREDIT_LIMIT": {
+          "type": "NUMERIC(18,2)",
+          "index": 7,
+          "name": "MIN_CREDIT_LIMIT",
+          "comment": null
+        },
+        "MAX_CREDIT_LIMIT": {
+          "type": "NUMERIC(18,2)",
+          "index": 8,
+          "name": "MAX_CREDIT_LIMIT",
+          "comment": null
+        },
+        "IS_ACTIVE": {
+          "type": "BOOLEAN",
+          "index": 9,
+          "name": "IS_ACTIVE",
+          "comment": null
+        },
+        "LAUNCHED_DATE": {
+          "type": "DATE",
+          "index": 10,
+          "name": "LAUNCHED_DATE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 28,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 20480,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.dim_branches": {
+      "unique_id": "model.banking.dim_branches",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "DIMENSIONS",
+        "name": "DIM_BRANCHES",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "BRANCH_CODE": {
+          "type": "TEXT(10)",
+          "index": 1,
+          "name": "BRANCH_CODE",
+          "comment": null
+        },
+        "BRANCH_NAME": {
+          "type": "TEXT(100)",
+          "index": 2,
+          "name": "BRANCH_NAME",
+          "comment": null
+        },
+        "BRANCH_TYPE": {
+          "type": "TEXT(20)",
+          "index": 3,
+          "name": "BRANCH_TYPE",
+          "comment": null
+        },
+        "REGION": {
+          "type": "TEXT(50)",
+          "index": 4,
+          "name": "REGION",
+          "comment": null
+        },
+        "CITY": {
+          "type": "TEXT(100)",
+          "index": 5,
+          "name": "CITY",
+          "comment": null
+        },
+        "POSTCODE": {
+          "type": "TEXT(10)",
+          "index": 6,
+          "name": "POSTCODE",
+          "comment": null
+        },
+        "OPENED_DATE": {
+          "type": "DATE",
+          "index": 7,
+          "name": "OPENED_DATE",
+          "comment": null
+        },
+        "CLOSED_DATE": {
+          "type": "DATE",
+          "index": 8,
+          "name": "CLOSED_DATE",
+          "comment": null
+        },
+        "IS_ACTIVE": {
+          "type": "BOOLEAN",
+          "index": 9,
+          "name": "IS_ACTIVE",
+          "comment": null
+        },
+        "SORT_CODE": {
+          "type": "CHAR(6)",
+          "index": 10,
+          "name": "SORT_CODE",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 156,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 51200,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.dim_date": {
+      "unique_id": "model.banking.dim_date",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "DIMENSIONS",
+        "name": "DIM_DATE",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "DATE_ID": {
+          "type": "DATE",
+          "index": 1,
+          "name": "DATE_ID",
+          "comment": null
+        },
+        "DATE_DAY": {
+          "type": "DATE",
+          "index": 2,
+          "name": "DATE_DAY",
+          "comment": null
+        },
+        "YEAR": {
+          "type": "INTEGER",
+          "index": 3,
+          "name": "YEAR",
+          "comment": null
+        },
+        "QUARTER": {
+          "type": "INTEGER",
+          "index": 4,
+          "name": "QUARTER",
+          "comment": null
+        },
+        "MONTH": {
+          "type": "INTEGER",
+          "index": 5,
+          "name": "MONTH",
+          "comment": null
+        },
+        "MONTH_NAME": {
+          "type": "TEXT(10)",
+          "index": 6,
+          "name": "MONTH_NAME",
+          "comment": null
+        },
+        "WEEK_OF_YEAR": {
+          "type": "INTEGER",
+          "index": 7,
+          "name": "WEEK_OF_YEAR",
+          "comment": null
+        },
+        "DAY_OF_MONTH": {
+          "type": "INTEGER",
+          "index": 8,
+          "name": "DAY_OF_MONTH",
+          "comment": null
+        },
+        "DAY_OF_WEEK": {
+          "type": "INTEGER",
+          "index": 9,
+          "name": "DAY_OF_WEEK",
+          "comment": null
+        },
+        "DAY_NAME": {
+          "type": "TEXT(10)",
+          "index": 10,
+          "name": "DAY_NAME",
+          "comment": null
+        },
+        "DAY_OF_YEAR": {
+          "type": "INTEGER",
+          "index": 11,
+          "name": "DAY_OF_YEAR",
+          "comment": null
+        },
+        "FIRST_DAY_OF_MONTH": {
+          "type": "DATE",
+          "index": 12,
+          "name": "FIRST_DAY_OF_MONTH",
+          "comment": null
+        },
+        "LAST_DAY_OF_MONTH": {
+          "type": "DATE",
+          "index": 13,
+          "name": "LAST_DAY_OF_MONTH",
+          "comment": null
+        },
+        "FIRST_DAY_OF_QUARTER": {
+          "type": "DATE",
+          "index": 14,
+          "name": "FIRST_DAY_OF_QUARTER",
+          "comment": null
+        },
+        "FIRST_DAY_OF_YEAR": {
+          "type": "DATE",
+          "index": 15,
+          "name": "FIRST_DAY_OF_YEAR",
+          "comment": null
+        },
+        "IS_WEEKEND": {
+          "type": "BOOLEAN",
+          "index": 16,
+          "name": "IS_WEEKEND",
+          "comment": null
+        },
+        "YEAR_MONTH": {
+          "type": "TEXT(6)",
+          "index": 17,
+          "name": "YEAR_MONTH",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 5479,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 2097152,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.fct_transactions": {
+      "unique_id": "model.banking.fct_transactions",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "FACTS",
+        "name": "FCT_TRANSACTIONS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "TRANSACTION_ID": {
+          "type": "TEXT(36)",
+          "index": 1,
+          "name": "TRANSACTION_ID",
+          "comment": null
+        },
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
+          "index": 2,
+          "name": "ACCOUNT_ID",
+          "comment": null
+        },
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 3,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "TRANSACTION_DATE": {
+          "type": "DATE",
+          "index": 4,
+          "name": "TRANSACTION_DATE",
+          "comment": null
+        },
+        "TRANSACTION_DATETIME": {
+          "type": "TIMESTAMPTZ",
+          "index": 5,
+          "name": "TRANSACTION_DATETIME",
+          "comment": null
+        },
+        "TRANSACTION_TYPE": {
+          "type": "TEXT(30)",
+          "index": 6,
+          "name": "TRANSACTION_TYPE",
+          "comment": null
+        },
+        "CHANNEL": {
+          "type": "TEXT(20)",
+          "index": 7,
+          "name": "CHANNEL",
+          "comment": null
+        },
+        "AMOUNT": {
+          "type": "NUMERIC(18,2)",
+          "index": 8,
+          "name": "AMOUNT",
+          "comment": null
+        },
+        "CURRENCY_CODE": {
+          "type": "CHAR(3)",
+          "index": 9,
+          "name": "CURRENCY_CODE",
+          "comment": null
+        },
+        "DIRECTION": {
+          "type": "TEXT(6)",
+          "index": 10,
+          "name": "DIRECTION",
+          "comment": null
+        },
+        "MERCHANT_NAME": {
+          "type": "TEXT(200)",
+          "index": 11,
+          "name": "MERCHANT_NAME",
+          "comment": null
+        },
+        "MCC": {
+          "type": "TEXT(4)",
+          "index": 12,
+          "name": "MCC",
+          "comment": null
+        },
+        "RUNNING_BALANCE": {
+          "type": "NUMERIC(18,2)",
+          "index": 13,
+          "name": "RUNNING_BALANCE",
+          "comment": null
+        },
+        "IS_FLAGGED_FRAUD": {
+          "type": "BOOLEAN",
+          "index": 14,
+          "name": "IS_FLAGGED_FRAUD",
+          "comment": null
+        },
+        "PRODUCT_NAME": {
+          "type": "TEXT(100)",
+          "index": 15,
+          "name": "PRODUCT_NAME",
+          "comment": null
+        },
+        "PRODUCT_CATEGORY": {
+          "type": "TEXT(30)",
+          "index": 16,
+          "name": "PRODUCT_CATEGORY",
+          "comment": null
+        },
+        "BRANCH_CODE": {
+          "type": "TEXT(10)",
+          "index": 17,
+          "name": "BRANCH_CODE",
+          "comment": null
+        },
+        "AMOUNT_BAND": {
+          "type": "TEXT(10)",
+          "index": 18,
+          "name": "AMOUNT_BAND",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 19,
+          "name": "_LOADED_AT",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 48500000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 16106127360,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.fct_loan_repayments": {
+      "unique_id": "model.banking.fct_loan_repayments",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "FACTS",
+        "name": "FCT_LOAN_REPAYMENTS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "LOAN_SCHEDULE_ID": {
+          "type": "TEXT(36)",
+          "index": 1,
+          "name": "LOAN_SCHEDULE_ID",
+          "comment": null
+        },
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
+          "index": 2,
+          "name": "ACCOUNT_ID",
+          "comment": null
+        },
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 3,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "DUE_DATE": {
+          "type": "DATE",
+          "index": 4,
+          "name": "DUE_DATE",
+          "comment": null
+        },
+        "PAID_DATE": {
+          "type": "DATE",
+          "index": 5,
+          "name": "PAID_DATE",
+          "comment": null
+        },
+        "INSTALLMENT_NUMBER": {
+          "type": "INTEGER",
+          "index": 6,
+          "name": "INSTALLMENT_NUMBER",
+          "comment": null
+        },
+        "PRINCIPAL_DUE": {
+          "type": "NUMERIC(18,2)",
+          "index": 7,
+          "name": "PRINCIPAL_DUE",
+          "comment": null
+        },
+        "INTEREST_DUE": {
+          "type": "NUMERIC(18,2)",
+          "index": 8,
+          "name": "INTEREST_DUE",
+          "comment": null
+        },
+        "TOTAL_DUE": {
+          "type": "NUMERIC(18,2)",
+          "index": 9,
+          "name": "TOTAL_DUE",
+          "comment": null
+        },
+        "PRINCIPAL_PAID": {
+          "type": "NUMERIC(18,2)",
+          "index": 10,
+          "name": "PRINCIPAL_PAID",
+          "comment": null
+        },
+        "INTEREST_PAID": {
+          "type": "NUMERIC(18,2)",
+          "index": 11,
+          "name": "INTEREST_PAID",
+          "comment": null
+        },
+        "TOTAL_PAID": {
+          "type": "NUMERIC(18,2)",
+          "index": 12,
+          "name": "TOTAL_PAID",
+          "comment": null
+        },
+        "ARREARS_AMOUNT": {
+          "type": "NUMERIC(18,2)",
+          "index": 13,
+          "name": "ARREARS_AMOUNT",
+          "comment": null
+        },
+        "REPAYMENT_STATUS": {
+          "type": "TEXT(20)",
+          "index": 14,
+          "name": "REPAYMENT_STATUS",
+          "comment": null
+        },
+        "DAYS_PAST_DUE": {
+          "type": "INTEGER",
+          "index": 15,
+          "name": "DAYS_PAST_DUE",
+          "comment": null
+        },
+        "PRODUCT_NAME": {
+          "type": "TEXT(100)",
+          "index": 16,
+          "name": "PRODUCT_NAME",
+          "comment": null
+        },
+        "INTEREST_RATE_PCT": {
+          "type": "NUMERIC(6,4)",
+          "index": 17,
+          "name": "INTEREST_RATE_PCT",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 18,
+          "name": "_LOADED_AT",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 3200000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 838860800,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.fct_payments": {
+      "unique_id": "model.banking.fct_payments",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "FACTS",
+        "name": "FCT_PAYMENTS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "PAYMENT_ID": {
+          "type": "TEXT(36)",
+          "index": 1,
+          "name": "PAYMENT_ID",
+          "comment": null
+        },
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
+          "index": 2,
+          "name": "ACCOUNT_ID",
+          "comment": null
+        },
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 3,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "PAYMENT_DATE": {
+          "type": "DATE",
+          "index": 4,
+          "name": "PAYMENT_DATE",
+          "comment": null
+        },
+        "PAYMENT_DATETIME": {
+          "type": "TIMESTAMPTZ",
+          "index": 5,
+          "name": "PAYMENT_DATETIME",
+          "comment": null
+        },
+        "PAYMENT_TYPE": {
+          "type": "TEXT(30)",
+          "index": 6,
+          "name": "PAYMENT_TYPE",
+          "comment": null
+        },
+        "PAYMENT_CHANNEL": {
+          "type": "TEXT(20)",
+          "index": 7,
+          "name": "PAYMENT_CHANNEL",
+          "comment": null
+        },
+        "PAYMENT_AMOUNT": {
+          "type": "NUMERIC(18,2)",
+          "index": 8,
+          "name": "PAYMENT_AMOUNT",
+          "comment": null
+        },
+        "CURRENCY_CODE": {
+          "type": "CHAR(3)",
+          "index": 9,
+          "name": "CURRENCY_CODE",
+          "comment": null
+        },
+        "DIRECTION": {
+          "type": "TEXT(6)",
+          "index": 10,
+          "name": "DIRECTION",
+          "comment": null
+        },
+        "BENEFICIARY_NAME": {
+          "type": "TEXT(200)",
+          "index": 11,
+          "name": "BENEFICIARY_NAME",
+          "comment": null
+        },
+        "IS_FLAGGED_FRAUD": {
+          "type": "BOOLEAN",
+          "index": 12,
+          "name": "IS_FLAGGED_FRAUD",
+          "comment": null
+        },
+        "PRODUCT_NAME": {
+          "type": "TEXT(100)",
+          "index": 13,
+          "name": "PRODUCT_NAME",
+          "comment": null
+        },
+        "_LOADED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 14,
+          "name": "_LOADED_AT",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 12400000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 4194304000,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.int_customer_transactions_daily": {
+      "unique_id": "model.banking.int_customer_transactions_daily",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "INTERMEDIATE",
+        "name": "INT_CUSTOMER_TRANSACTIONS_DAILY",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 1,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "FULL_NAME": {
+          "type": "TEXT(200)",
+          "index": 2,
+          "name": "FULL_NAME",
+          "comment": null
+        },
+        "RISK_TIER": {
+          "type": "TEXT(10)",
+          "index": 3,
+          "name": "RISK_TIER",
+          "comment": null
+        },
+        "TRANSACTION_DATE": {
+          "type": "DATE",
+          "index": 4,
+          "name": "TRANSACTION_DATE",
+          "comment": null
+        },
+        "TRANSACTION_COUNT": {
+          "type": "INT8",
+          "index": 5,
+          "name": "TRANSACTION_COUNT",
+          "comment": null
+        },
+        "TOTAL_DEBITS": {
+          "type": "NUMERIC(18,2)",
+          "index": 6,
+          "name": "TOTAL_DEBITS",
+          "comment": null
+        },
+        "TOTAL_CREDITS": {
+          "type": "NUMERIC(18,2)",
+          "index": 7,
+          "name": "TOTAL_CREDITS",
+          "comment": null
+        },
+        "TOTAL_AMOUNT": {
+          "type": "NUMERIC(18,2)",
+          "index": 8,
+          "name": "TOTAL_AMOUNT",
+          "comment": null
+        },
+        "ACCOUNTS_USED": {
+          "type": "INT8",
+          "index": 9,
+          "name": "ACCOUNTS_USED",
+          "comment": null
+        },
+        "CHANNELS_USED": {
+          "type": "INT8",
+          "index": 10,
+          "name": "CHANNELS_USED",
+          "comment": null
+        },
+        "FRAUD_FLAG_COUNT": {
+          "type": "INT8",
+          "index": 11,
+          "name": "FRAUD_FLAG_COUNT",
+          "comment": null
+        },
+        "MAX_SINGLE_TRANSACTION": {
+          "type": "NUMERIC(18,2)",
+          "index": 12,
+          "name": "MAX_SINGLE_TRANSACTION",
+          "comment": null
+        },
+        "AVG_TRANSACTION_AMOUNT": {
+          "type": "NUMERIC(18,2)",
+          "index": 13,
+          "name": "AVG_TRANSACTION_AMOUNT",
+          "comment": null
+        },
+        "DISTINCT_MERCHANT_CATEGORIES": {
+          "type": "INT8",
+          "index": 14,
+          "name": "DISTINCT_MERCHANT_CATEGORIES",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 18500000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 5368709120,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.int_loan_arrears": {
+      "unique_id": "model.banking.int_loan_arrears",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "INTERMEDIATE",
+        "name": "INT_LOAN_ARREARS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
+          "index": 1,
+          "name": "ACCOUNT_ID",
+          "comment": null
+        },
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 2,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "PRODUCT_NAME": {
+          "type": "TEXT(100)",
+          "index": 3,
+          "name": "PRODUCT_NAME",
+          "comment": null
+        },
+        "CREDIT_LIMIT": {
+          "type": "NUMERIC(18,2)",
+          "index": 4,
+          "name": "CREDIT_LIMIT",
+          "comment": null
+        },
+        "MISSED_INSTALLMENTS": {
+          "type": "INT8",
+          "index": 5,
+          "name": "MISSED_INSTALLMENTS",
+          "comment": null
+        },
+        "TOTAL_ARREARS": {
+          "type": "NUMERIC(18,2)",
+          "index": 6,
+          "name": "TOTAL_ARREARS",
+          "comment": null
+        },
+        "MAX_DAYS_PAST_DUE": {
+          "type": "INTEGER",
+          "index": 7,
+          "name": "MAX_DAYS_PAST_DUE",
+          "comment": null
+        },
+        "EARLIEST_MISSED_DUE_DATE": {
+          "type": "DATE",
+          "index": 8,
+          "name": "EARLIEST_MISSED_DUE_DATE",
+          "comment": null
+        },
+        "IFRS9_STAGE": {
+          "type": "TEXT(10)",
+          "index": 9,
+          "name": "IFRS9_STAGE",
+          "comment": null
+        },
+        "CALCULATED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 10,
+          "name": "CALCULATED_AT",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 125000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 31457280,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.mart_customer_360": {
+      "unique_id": "model.banking.mart_customer_360",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "MARTS",
+        "name": "MART_CUSTOMER_360",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 1,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "CUSTOMER_NUMBER": {
+          "type": "TEXT(20)",
+          "index": 2,
+          "name": "CUSTOMER_NUMBER",
+          "comment": null
+        },
+        "FULL_NAME": {
+          "type": "TEXT(200)",
+          "index": 3,
+          "name": "FULL_NAME",
+          "comment": null
+        },
+        "EMAIL_ADDRESS": {
+          "type": "TEXT(255)",
+          "index": 4,
+          "name": "EMAIL_ADDRESS",
+          "comment": null
+        },
+        "DATE_OF_BIRTH": {
+          "type": "DATE",
+          "index": 5,
+          "name": "DATE_OF_BIRTH",
+          "comment": null
+        },
+        "AGE": {
+          "type": "INTEGER",
+          "index": 6,
+          "name": "AGE",
+          "comment": null
+        },
+        "NATIONALITY_CODE": {
+          "type": "CHAR(2)",
+          "index": 7,
+          "name": "NATIONALITY_CODE",
+          "comment": null
+        },
+        "CITY": {
+          "type": "TEXT(100)",
+          "index": 8,
+          "name": "CITY",
+          "comment": null
+        },
+        "KYC_STATUS": {
+          "type": "TEXT(20)",
+          "index": 9,
+          "name": "KYC_STATUS",
+          "comment": null
+        },
+        "RISK_TIER": {
+          "type": "TEXT(10)",
+          "index": 10,
+          "name": "RISK_TIER",
+          "comment": null
+        },
+        "TOTAL_ACCOUNTS": {
+          "type": "INT8",
+          "index": 11,
+          "name": "TOTAL_ACCOUNTS",
+          "comment": null
+        },
+        "ACTIVE_ACCOUNTS": {
+          "type": "INT8",
+          "index": 12,
+          "name": "ACTIVE_ACCOUNTS",
+          "comment": null
+        },
+        "TOTAL_BALANCE": {
+          "type": "NUMERIC(18,2)",
+          "index": 13,
+          "name": "TOTAL_BALANCE",
+          "comment": null
+        },
+        "TOTAL_CREDIT_LIMIT": {
+          "type": "NUMERIC(18,2)",
+          "index": 14,
+          "name": "TOTAL_CREDIT_LIMIT",
+          "comment": null
+        },
+        "LATEST_ACCOUNT_OPENED": {
+          "type": "DATE",
+          "index": 15,
+          "name": "LATEST_ACCOUNT_OPENED",
+          "comment": null
+        },
+        "TOTAL_TRANSACTIONS_LIFETIME": {
+          "type": "INT8",
+          "index": 16,
+          "name": "TOTAL_TRANSACTIONS_LIFETIME",
+          "comment": null
+        },
+        "TOTAL_DEBITS_LIFETIME": {
+          "type": "NUMERIC(18,2)",
+          "index": 17,
+          "name": "TOTAL_DEBITS_LIFETIME",
+          "comment": null
+        },
+        "TOTAL_CREDITS_LIFETIME": {
+          "type": "NUMERIC(18,2)",
+          "index": 18,
+          "name": "TOTAL_CREDITS_LIFETIME",
+          "comment": null
+        },
+        "LAST_TRANSACTION_DATE": {
+          "type": "DATE",
+          "index": 19,
+          "name": "LAST_TRANSACTION_DATE",
+          "comment": null
+        },
+        "TOTAL_FRAUD_FLAGS": {
+          "type": "INT8",
+          "index": 20,
+          "name": "TOTAL_FRAUD_FLAGS",
+          "comment": null
+        },
+        "TOTAL_LOAN_EXPOSURE": {
+          "type": "NUMERIC(18,2)",
+          "index": 21,
+          "name": "TOTAL_LOAN_EXPOSURE",
+          "comment": null
+        },
+        "TOTAL_ARREARS": {
+          "type": "NUMERIC(18,2)",
+          "index": 22,
+          "name": "TOTAL_ARREARS",
+          "comment": null
+        },
+        "MAX_DAYS_PAST_DUE": {
+          "type": "INTEGER",
+          "index": 23,
+          "name": "MAX_DAYS_PAST_DUE",
+          "comment": null
+        },
+        "LOAN_ACCOUNTS": {
+          "type": "INT8",
+          "index": 24,
+          "name": "LOAN_ACCOUNTS",
+          "comment": null
+        },
+        "DBT_UPDATED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 25,
+          "name": "DBT_UPDATED_AT",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 245000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 68157440,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.mart_fraud_summary": {
+      "unique_id": "model.banking.mart_fraud_summary",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "MARTS",
+        "name": "MART_FRAUD_SUMMARY",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
+          "index": 1,
+          "name": "ACCOUNT_ID",
+          "comment": null
+        },
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 2,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "PRODUCT_NAME": {
+          "type": "TEXT(100)",
+          "index": 3,
+          "name": "PRODUCT_NAME",
+          "comment": null
+        },
+        "PRODUCT_CATEGORY": {
+          "type": "TEXT(30)",
+          "index": 4,
+          "name": "PRODUCT_CATEGORY",
+          "comment": null
+        },
+        "BRANCH_CODE": {
+          "type": "TEXT(10)",
+          "index": 5,
+          "name": "BRANCH_CODE",
+          "comment": null
+        },
+        "FRAUD_TRANSACTION_COUNT": {
+          "type": "INT8",
+          "index": 6,
+          "name": "FRAUD_TRANSACTION_COUNT",
+          "comment": null
+        },
+        "TOTAL_FRAUD_AMOUNT": {
+          "type": "NUMERIC(18,2)",
+          "index": 7,
+          "name": "TOTAL_FRAUD_AMOUNT",
+          "comment": null
+        },
+        "AVG_FRAUD_AMOUNT": {
+          "type": "NUMERIC(18,2)",
+          "index": 8,
+          "name": "AVG_FRAUD_AMOUNT",
+          "comment": null
+        },
+        "MAX_FRAUD_AMOUNT": {
+          "type": "NUMERIC(18,2)",
+          "index": 9,
+          "name": "MAX_FRAUD_AMOUNT",
+          "comment": null
+        },
+        "FIRST_FRAUD_DATE": {
+          "type": "DATE",
+          "index": 10,
+          "name": "FIRST_FRAUD_DATE",
+          "comment": null
+        },
+        "LATEST_FRAUD_DATE": {
+          "type": "DATE",
+          "index": 11,
+          "name": "LATEST_FRAUD_DATE",
+          "comment": null
+        },
+        "FRAUD_CHANNELS": {
+          "type": "INT8",
+          "index": 12,
+          "name": "FRAUD_CHANNELS",
+          "comment": null
+        },
+        "FRAUD_MERCHANT_CATEGORIES": {
+          "type": "INT8",
+          "index": 13,
+          "name": "FRAUD_MERCHANT_CATEGORIES",
+          "comment": null
+        },
+        "DISTINCT_MERCHANTS": {
+          "type": "INT8",
+          "index": 14,
+          "name": "DISTINCT_MERCHANTS",
+          "comment": null
+        },
+        "FRAUD_RISK_LEVEL": {
+          "type": "TEXT(10)",
+          "index": 15,
+          "name": "FRAUD_RISK_LEVEL",
+          "comment": null
+        },
+        "DBT_UPDATED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 16,
+          "name": "DBT_UPDATED_AT",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 87000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 20971520,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    },
+    "model.banking.mart_credit_risk": {
+      "unique_id": "model.banking.mart_credit_risk",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "MARTS",
+        "name": "MART_CREDIT_RISK",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "DBT_USER"
+      },
+      "columns": {
+        "ACCOUNT_ID": {
+          "type": "TEXT(32)",
+          "index": 1,
+          "name": "ACCOUNT_ID",
+          "comment": null
+        },
+        "CUSTOMER_ID": {
+          "type": "TEXT(32)",
+          "index": 2,
+          "name": "CUSTOMER_ID",
+          "comment": null
+        },
+        "FULL_NAME": {
+          "type": "TEXT(200)",
+          "index": 3,
+          "name": "FULL_NAME",
+          "comment": null
+        },
+        "RISK_TIER": {
+          "type": "TEXT(10)",
+          "index": 4,
+          "name": "RISK_TIER",
+          "comment": null
+        },
+        "KYC_STATUS": {
+          "type": "TEXT(20)",
+          "index": 5,
+          "name": "KYC_STATUS",
+          "comment": null
+        },
+        "PRODUCT_NAME": {
+          "type": "TEXT(100)",
+          "index": 6,
+          "name": "PRODUCT_NAME",
+          "comment": null
+        },
+        "CREDIT_LIMIT": {
+          "type": "NUMERIC(18,2)",
+          "index": 7,
+          "name": "CREDIT_LIMIT",
+          "comment": null
+        },
+        "CURRENT_BALANCE": {
+          "type": "NUMERIC(18,2)",
+          "index": 8,
+          "name": "CURRENT_BALANCE",
+          "comment": null
+        },
+        "ACCOUNT_HEALTH": {
+          "type": "TEXT(20)",
+          "index": 9,
+          "name": "ACCOUNT_HEALTH",
+          "comment": null
+        },
+        "IFRS9_STAGE": {
+          "type": "TEXT(10)",
+          "index": 10,
+          "name": "IFRS9_STAGE",
+          "comment": null
+        },
+        "TOTAL_ARREARS": {
+          "type": "NUMERIC(18,2)",
+          "index": 11,
+          "name": "TOTAL_ARREARS",
+          "comment": null
+        },
+        "MAX_DAYS_PAST_DUE": {
+          "type": "INTEGER",
+          "index": 12,
+          "name": "MAX_DAYS_PAST_DUE",
+          "comment": null
+        },
+        "MISSED_INSTALLMENTS": {
+          "type": "INT8",
+          "index": 13,
+          "name": "MISSED_INSTALLMENTS",
+          "comment": null
+        },
+        "TOTAL_INSTALLMENTS": {
+          "type": "INT8",
+          "index": 14,
+          "name": "TOTAL_INSTALLMENTS",
+          "comment": null
+        },
+        "PAID_INSTALLMENTS": {
+          "type": "INT8",
+          "index": 15,
+          "name": "PAID_INSTALLMENTS",
+          "comment": null
+        },
+        "TOTAL_REPAID": {
+          "type": "NUMERIC(18,2)",
+          "index": 16,
+          "name": "TOTAL_REPAID",
+          "comment": null
+        },
+        "AVG_DAYS_PAST_DUE": {
+          "type": "NUMERIC(10,2)",
+          "index": 17,
+          "name": "AVG_DAYS_PAST_DUE",
+          "comment": null
+        },
+        "REPAYMENT_RATE_PCT": {
+          "type": "NUMERIC(5,2)",
+          "index": 18,
+          "name": "REPAYMENT_RATE_PCT",
+          "comment": null
+        },
+        "ECL_PROVISION": {
+          "type": "NUMERIC(18,2)",
+          "index": 19,
+          "name": "ECL_PROVISION",
+          "comment": null
+        },
+        "DBT_UPDATED_AT": {
+          "type": "TIMESTAMPTZ",
+          "index": 20,
+          "name": "DBT_UPDATED_AT",
+          "comment": null
+        }
+      },
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": true,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        },
+        "row_count": {
+          "id": "row_count",
+          "label": "Row Count",
+          "value": 412000,
+          "include": true,
+          "description": "Approximate number of rows in the table"
+        },
+        "num_bytes": {
+          "id": "num_bytes",
+          "label": "Size (Bytes)",
+          "value": 104857600,
+          "include": true,
+          "description": "Approximate storage size in bytes"
+        },
+        "last_modified": {
+          "id": "last_modified",
+          "label": "Last Modified",
+          "value": "2024-03-21 10:00:00",
+          "include": true,
+          "description": "Timestamp of the most recent write"
+        }
+      }
+    }
+  },
+  "sources": {
+    "source.banking.banking_raw.customers": {
+      "unique_id": "source.banking.banking_raw.customers",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "RAW",
+        "name": "CUSTOMERS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "FIVETRAN_USER"
+      },
+      "columns": {},
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "source.banking.banking_raw.accounts": {
+      "unique_id": "source.banking.banking_raw.accounts",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "RAW",
+        "name": "ACCOUNTS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "FIVETRAN_USER"
+      },
+      "columns": {},
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "source.banking.banking_raw.transactions": {
+      "unique_id": "source.banking.banking_raw.transactions",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "RAW",
+        "name": "TRANSACTIONS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "FIVETRAN_USER"
+      },
+      "columns": {},
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "source.banking.banking_raw.loan_schedule": {
+      "unique_id": "source.banking.banking_raw.loan_schedule",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "RAW",
+        "name": "LOAN_SCHEDULE",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "FIVETRAN_USER"
+      },
+      "columns": {},
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "source.banking.banking_raw.kyc": {
+      "unique_id": "source.banking.banking_raw.kyc",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "RAW",
+        "name": "KYC",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "FIVETRAN_USER"
+      },
+      "columns": {},
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "source.banking.banking_raw.products": {
+      "unique_id": "source.banking.banking_raw.products",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "RAW",
+        "name": "PRODUCTS",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "FIVETRAN_USER"
+      },
+      "columns": {},
+      "stats": {
+        "has_stats": {
+          "id": "has_stats",
+          "label": "Has Stats?",
+          "value": false,
+          "include": false,
+          "description": "Indicates whether statistics are available for this table"
+        }
+      }
+    },
+    "source.banking.banking_raw.branches": {
+      "unique_id": "source.banking.banking_raw.branches",
+      "metadata": {
+        "type": "BASE TABLE",
+        "schema": "RAW",
+        "name": "BRANCHES",
+        "database": "WAREHOUSE",
+        "comment": null,
+        "owner": "FIVETRAN_USER"
+      },
+      "columns": {},
       "stats": {
         "has_stats": {
           "id": "has_stats",
@@ -1064,6 +2491,5 @@
       }
     }
   },
-  "sources": {},
   "errors": null
 }

@@ -31,7 +31,7 @@ class Indexer:
             self._embedder = SentenceTransformer(self.config.embedding_model)
         return self._embedder
 
-    def index(self, chunks: list[ModelChunk], show_progress: bool = True) -> int:
+    def index(self, chunks: list[ModelChunk], show_progress: bool = True, recreate: bool = False) -> int:
         """Embed chunks and upsert into the vector store. Returns count indexed."""
         embedder = self._get_embedder()
         texts = [chunk.to_text() for chunk in chunks]
@@ -42,19 +42,23 @@ class Indexer:
         vectors = embedder.encode(texts, show_progress_bar=show_progress, convert_to_numpy=True)
 
         if self.config.vector_db == "qdrant":
-            return self._upsert_qdrant(chunks, vectors)
+            return self._upsert_qdrant(chunks, vectors, recreate=recreate)
         elif self.config.vector_db == "pgvector":
-            return self._upsert_pgvector(chunks, vectors)
+            return self._upsert_pgvector(chunks, vectors, recreate=recreate)
         else:
             raise ValueError(f"Unknown vector_db: {self.config.vector_db}")
 
-    def _upsert_qdrant(self, chunks: list[ModelChunk], vectors) -> int:
+    def _upsert_qdrant(self, chunks: list[ModelChunk], vectors, recreate: bool = False) -> int:
         from qdrant_client import QdrantClient
         from qdrant_client.models import Distance, PointStruct, VectorParams
 
         client = QdrantClient(host=self.config.qdrant_host, port=self.config.qdrant_port)
 
         existing = [c.name for c in client.get_collections().collections]
+        if recreate and self.config.qdrant_collection in existing:
+            client.delete_collection(self.config.qdrant_collection)
+            existing.remove(self.config.qdrant_collection)
+
         if self.config.qdrant_collection not in existing:
             client.create_collection(
                 collection_name=self.config.qdrant_collection,
@@ -67,9 +71,13 @@ class Indexer:
                 vector=vec.tolist(),
                 payload={
                     **chunk.to_metadata(),
+                    "model_id": chunk.model_id,
                     "text": chunk.to_text(),
                     "description": chunk.description,
                     "depends_on": chunk.depends_on,
+                    "child_ids": chunk.child_ids,
+                    "column_names": [c.name for c in chunk.columns],
+                    "compiled_sql": chunk.compiled_sql or "",
                     "columns": [
                         {"name": c.name, "description": c.description, "data_type": c.data_type}
                         for c in chunk.columns
@@ -82,7 +90,7 @@ class Indexer:
         client.upsert(collection_name=self.config.qdrant_collection, points=points)
         return len(points)
 
-    def _upsert_pgvector(self, chunks: list[ModelChunk], vectors) -> int:
+    def _upsert_pgvector(self, chunks: list[ModelChunk], vectors, recreate: bool = False) -> int:
         import json
 
         import psycopg2
@@ -91,6 +99,8 @@ class Indexer:
         conn = psycopg2.connect(self.config.pg_dsn)
         cur = conn.cursor()
         cur.execute("CREATE EXTENSION IF NOT EXISTS vector")
+        if recreate:
+            cur.execute(f"DROP TABLE IF EXISTS {self.config.pg_table}")
         cur.execute(f"""
             CREATE TABLE IF NOT EXISTS {self.config.pg_table} (
                 id          TEXT PRIMARY KEY,
