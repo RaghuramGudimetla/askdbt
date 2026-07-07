@@ -60,6 +60,9 @@ askdbt uses Ollama to classify every question — any phrasing works:
 | Layer breakdown | "models per layer", "breakdown by layer" |
 | Dependencies | "show the dependency tree" |
 | Column usage | "which columns of dim_customers aren't used downstream?" |
+| **Impact analysis** | "what breaks if I remove credit_score from dim_customers?" |
+| **Upstream lineage** | "where does customer_id come from in mart_customer_360?" |
+| **Column trace** | "trace credit_limit from source to mart" |
 | Describe | "what does mart_credit_risk do?" |
 | SQL | "show the SQL for fct_transactions" |
 | Size | "how big is fct_transactions?", "which models have over 1M rows?" |
@@ -90,8 +93,13 @@ manifest.json + catalog.json
         │
         ▼
   Retriever
-        ├── Ollama classifies intent (count / list / deps / column_usage / general)
-        ├── Meta questions  →  answered directly from vector store (exact)
+        ├── Ollama classifies intent (count / list / deps / column_usage /
+        │                            impact_analysis / upstream_lineage / column_trace / general)
+        ├── Meta questions  →  answered directly from vector store (exact, no hallucination)
+        │     column_usage      : sqlglot AST parse of compiled SQL per downstream model
+        │     impact_analysis   : transitive DAG walk + sqlglot column reference check
+        │     upstream_lineage  : BFS upward through depends_on, traces column origin
+        │     column_trace      : bidirectional — upstream origin + downstream impact
         └── General questions  →  cosine search → top-k chunks → Ollama answer
 ```
 

@@ -242,6 +242,9 @@ askdbt uses Ollama to classify every question before answering, so any natural p
 | Layer breakdown | "models per layer", "breakdown by layer", "how many models in each layer?" |
 | Dependencies | "show the dependency tree", "what upstream models does mart_credit_risk use?" |
 | Column usage | "which columns of dim_customers aren't used downstream?", "what columns from fct_transactions go unused?" |
+| **Impact analysis** | "what breaks if I remove credit_score from dim_customers?", "which downstream models use risk_score?" |
+| **Upstream lineage** | "where does customer_id come from in mart_customer_360?", "which model computes ecl_provision?" |
+| **Column trace** | "trace credit_limit from source to mart", "show full lineage of customer_id through dim_accounts" |
 | Describe a model | "what does int_loan_arrears do?", "explain mart_fraud_summary" |
 | Column meaning | "what is the ifrs9_stage column?", "what does ecl_provision mean?" |
 | SQL | "show the SQL for mart_credit_risk" |
@@ -264,6 +267,81 @@ askdbt index \
 
 askdbt chat
 ```
+
+---
+
+## Column lineage features
+
+askdbt can answer three types of lineage questions using the compiled SQL from your dbt models:
+
+### Impact analysis — "what breaks if I change this?"
+
+```
+You: what breaks if I remove credit_score from dim_customers?
+
+askdbt: ## Impact analysis: `credit_score` in `dim_customers`
+
+        ### Models that will break (2)
+        - **mart_credit_risk** (mart)
+        - **mart_customer_360** (mart)
+
+        ### Models not directly impacted (1)
+        - int_customer_transactions_daily
+
+        Total downstream models checked: 3
+```
+
+askdbt walks every transitive descendant in the DAG (not just immediate children) and uses
+sqlglot to parse each model's compiled SQL. Only models that literally reference the column
+name in their query are flagged as breaking.
+
+### Upstream lineage — "where does this column come from?"
+
+```
+You: where does customer_id come from in mart_customer_360?
+
+askdbt: ## Upstream lineage: `customer_id` ← `mart_customer_360`
+
+        **Column originates in:** `stg_customers` (staging)
+
+        ### Lineage path
+        `stg_customers` → `dim_customers` → `mart_customer_360`
+
+        ### Origin model: `stg_customers`
+        Layer: staging
+        Description: Staging model for raw customer data...
+```
+
+askdbt walks upward through `depends_on` at each hop, checking whether the column appears
+in each model's documented output columns. The origin is the deepest ancestor that has the
+column but none of its own upstream models do.
+
+### Column trace — full end-to-end lineage
+
+```
+You: trace credit_limit from source to mart
+
+askdbt: # Column trace: `credit_limit` through `dim_accounts`
+
+        ## Upstream lineage
+        **Column originates in:** `stg_accounts` (staging)
+        Lineage path: `stg_accounts` → `dim_accounts`
+
+        ## Downstream impact
+        ### Directly references `credit_limit` (2 models)
+        - **mart_credit_risk** (mart)
+        - **mart_customer_360** (mart)
+
+        Total downstream models: 3 | Directly using `credit_limit`: 2
+```
+
+Column trace combines both directions: where the column comes from (upstream) and which
+downstream models actually use it (via sqlglot SQL parsing).
+
+> **Accuracy note:** Upstream lineage relies on columns being documented in your dbt schema
+> YAML files. Downstream impact uses compiled SQL parsing and is accurate regardless of
+> documentation completeness. Re-index with `--recreate` after `dbt docs generate` to
+> pick up new models or column documentation.
 
 ---
 

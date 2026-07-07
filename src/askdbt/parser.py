@@ -30,7 +30,8 @@ class ModelChunk:
     owner: str
     refresh_frequency: str
     depends_on: list[str]
-    child_ids: list[str]          # unique_ids of models that read from this model
+    child_ids: list[str]              # immediate downstream unique_ids (one hop)
+    all_downstream_ids: list[str]     # transitive closure — every descendant unique_id
     file_path: str
     row_count: Optional[int] = None
     size_bytes: Optional[int] = None
@@ -83,6 +84,19 @@ class ModelChunk:
         }
 
 
+def _transitive_descendants(node_id: str, child_map: dict[str, list[str]]) -> list[str]:
+    """BFS to compute every transitive downstream model unique_id."""
+    visited: set[str] = set()
+    queue: list[str] = list(child_map.get(node_id, []))
+    while queue:
+        n = queue.pop(0)
+        if n in visited:
+            continue
+        visited.add(n)
+        queue.extend(child_map.get(n, []))
+    return [n for n in visited if n.startswith("model.")]
+
+
 class ManifestParser:
     def __init__(self, manifest_path: str | Path, catalog_path: Optional[str | Path] = None):
         self.manifest_path = Path(manifest_path)
@@ -109,11 +123,18 @@ class ManifestParser:
             if node.get("resource_type") != "model":
                 continue
             child_ids = [c for c in child_map.get(node_id, []) if c.startswith("model.")]
-            chunks.append(self._parse_node(node, catalog, child_ids))
+            all_downstream = _transitive_descendants(node_id, child_map)
+            chunks.append(self._parse_node(node, catalog, child_ids, all_downstream))
 
         return chunks
 
-    def _parse_node(self, node: dict, catalog: dict, child_ids: list[str] | None = None) -> ModelChunk:
+    def _parse_node(
+        self,
+        node: dict,
+        catalog: dict,
+        child_ids: list[str] | None = None,
+        all_downstream_ids: list[str] | None = None,
+    ) -> ModelChunk:
         catalog_cols = {}
         if catalog:
             cat_node = catalog.get("nodes", {}).get(node["unique_id"], {})
@@ -167,6 +188,7 @@ class ManifestParser:
             refresh_frequency=meta.get("refresh_frequency", ""),
             depends_on=deps,
             child_ids=child_ids or [],
+            all_downstream_ids=all_downstream_ids or [],
             file_path=node.get("original_file_path", ""),
             row_count=cat_stats.get("row_count"),
             size_bytes=cat_stats.get("bytes"),

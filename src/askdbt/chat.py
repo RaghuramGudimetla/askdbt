@@ -6,8 +6,15 @@ import os
 
 import streamlit as st
 
-from .config import Config
-from .retriever import Retriever
+try:
+    from .config import Config
+    from .retriever import Retriever
+except ImportError:
+    import sys
+    from pathlib import Path
+    sys.path.insert(0, str(Path(__file__).parent.parent))
+    from askdbt.config import Config
+    from askdbt.retriever import Retriever
 
 
 def _config_from_env() -> Config:
@@ -43,11 +50,12 @@ def main():
         st.divider()
         st.markdown("**Example questions**")
         examples = [
-            "What does customer_lifetime_value mean?",
-            "How is fraud rate calculated?",
-            "What is the dpd_bucket column?",
-            "Which models power the customer 360 mart?",
-            "What is the difference between transaction_date and value_date?",
+            "How many models are in this project?",
+            "List all staging models",
+            "Which columns of dim_customers aren't used downstream?",
+            "What does the ecl_provision column mean?",
+            "What breaks if I remove customer_id from dim_customers?",
+            "Where does customer_id come from in mart_customer_360?",
         ]
         for q in examples:
             if st.button(q, use_container_width=True, key=q):

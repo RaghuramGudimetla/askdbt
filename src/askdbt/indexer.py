@@ -76,6 +76,7 @@ class Indexer:
                     "description": chunk.description,
                     "depends_on": chunk.depends_on,
                     "child_ids": chunk.child_ids,
+                    "all_downstream_ids": chunk.all_downstream_ids,
                     "column_names": [c.name for c in chunk.columns],
                     "compiled_sql": chunk.compiled_sql or "",
                     "columns": [
@@ -103,12 +104,17 @@ class Indexer:
             cur.execute(f"DROP TABLE IF EXISTS {self.config.pg_table}")
         cur.execute(f"""
             CREATE TABLE IF NOT EXISTS {self.config.pg_table} (
-                id          TEXT PRIMARY KEY,
-                model_id    TEXT NOT NULL,
-                model_name  TEXT NOT NULL,
-                text        TEXT NOT NULL,
-                metadata    JSONB,
-                embedding   vector({self.config.embedding_dim})
+                id                  TEXT PRIMARY KEY,
+                model_id            TEXT NOT NULL,
+                model_name          TEXT NOT NULL,
+                text                TEXT NOT NULL,
+                metadata            JSONB,
+                depends_on          TEXT[],
+                child_ids           TEXT[],
+                all_downstream_ids  TEXT[],
+                column_names        TEXT[],
+                compiled_sql        TEXT,
+                embedding           vector({self.config.embedding_dim})
             )
         """)
 
@@ -119,6 +125,11 @@ class Indexer:
                 chunk.model_name,
                 chunk.to_text(),
                 json.dumps(chunk.to_metadata()),
+                chunk.depends_on,
+                chunk.child_ids,
+                chunk.all_downstream_ids,
+                [c.name for c in chunk.columns],
+                chunk.compiled_sql or "",
                 vec.tolist(),
             )
             for chunk, vec in zip(chunks, vectors)
@@ -127,15 +138,22 @@ class Indexer:
         execute_values(
             cur,
             f"""
-            INSERT INTO {self.config.pg_table} (id, model_id, model_name, text, metadata, embedding)
+            INSERT INTO {self.config.pg_table}
+                (id, model_id, model_name, text, metadata, depends_on, child_ids,
+                 all_downstream_ids, column_names, compiled_sql, embedding)
             VALUES %s
             ON CONFLICT (id) DO UPDATE SET
-                text = EXCLUDED.text,
-                metadata = EXCLUDED.metadata,
-                embedding = EXCLUDED.embedding
+                text               = EXCLUDED.text,
+                metadata           = EXCLUDED.metadata,
+                depends_on         = EXCLUDED.depends_on,
+                child_ids          = EXCLUDED.child_ids,
+                all_downstream_ids = EXCLUDED.all_downstream_ids,
+                column_names       = EXCLUDED.column_names,
+                compiled_sql       = EXCLUDED.compiled_sql,
+                embedding          = EXCLUDED.embedding
             """,
             rows,
-            template="(%s, %s, %s, %s, %s, %s)",
+            template="(%s, %s, %s, %s, %s, %s, %s, %s, %s, %s, %s)",
         )
         conn.commit()
         cur.close()
